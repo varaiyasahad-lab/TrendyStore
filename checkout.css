@@ -1,0 +1,132 @@
+/* ===== CHECKOUT STEPS (ORDER → ADDRESS → PAYMENT) ===== */
+
+.checkout-steps{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:40px 0 60px;
+}
+
+/* Each step */
+.step{
+  text-align:center;
+  font-weight:700;
+  font-size:15px;
+  min-width:120px;
+}
+
+/* Circle */
+.circle{
+  width:54px;          /* 👈 thoda mota */
+  height:54px;
+  border-radius:50%;
+  background:#ddd;
+  color:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 10px;
+  font-size:20px;
+  border:3px solid #ccc;
+}
+
+/* Line between steps */
+.line{
+  width:100px;
+  height:6px;          /* 👈 height badhayi */
+  background:#ccc;
+  margin:0 12px;
+  border-radius:10px;
+}
+
+/* COMPLETED STEP */
+.step.done .circle{
+  background:#28a745;
+  color:#fff;
+  border-color:#28a745;
+}
+
+.step.done + .line{
+  background:#28a745;
+}
+
+/* ACTIVE STEP */
+.step.active .circle{
+  background:#fff;
+  color:#28a745;
+  border-color:#28a745;
+}
+
+/* Text color */
+.step.done,
+.step.active{
+  color:#28a745;
+}
+body{
+  background:#f7f7f7;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+/* ===== STEPS ===== */
+.checkout-steps{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+}
+
+.step{
+  text-align:center;
+  font-weight:600;
+  color:#777;
+}
+
+.step.active,
+.step.done{
+  color:#28a745;
+}
+
+.circle{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  border:2px solid #ccc;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 5px;
+  font-weight:bold;
+  background:#fff;
+}
+
+.step.done .circle{
+  background:#28a745;
+  color:#fff;
+  border:none;
+}
+
+.step.active .circle{
+  border-color:#28a745;
+  color:#28a745;
+}
+
+.line{
+  width:80px;
+  height:4px;
+  background:#ccc;
+  border-radius:5px;
+}
+
+.line.active{
+  background:#28a745;
+}
+
+/* ===== ADDRESS BOX ===== */
+.address-box{
+  max-width:500px;
+  margin:auto;
+  background:#fff;
+  padding:35px;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}

@@ -1,0 +1,3 @@
+<?php
+echo "ACCOUNT FOLDER WORKING";
+?>

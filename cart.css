@@ -1,0 +1,172 @@
+/* ======================
+   MY CART PAGE DESIGN
+====================== */
+
+body{
+  background:#f6f7f9;
+}
+
+/* Title */
+.cart-title{
+  font-weight:800;
+  text-align:center;
+  letter-spacing:1px;
+  margin-bottom:30px;
+}
+
+/* Table */
+.cart-table{
+  background:#fff;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+  border:1px solid #ddd; 
+}
+
+.cart-table th{
+  background:black;
+  color:#fff;
+  font-size:15px;
+  padding:16px;
+  text-transform:uppercase;
+}
+
+.cart-table td{
+  vertical-align:middle;
+  padding:18px 12px;
+  font-size:15px;
+}
+/* Row borders */
+.cart-table th,
+.cart-table td{
+  border:1px solid royalblue !important;
+}
+
+/* Product image */
+.cart-table img{
+  border-radius:10px;
+  margin-bottom:6px;
+}
+
+/* Qty buttons */
+.qty-btn{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  font-weight:700;
+  line-height:18px;
+  padding:0;
+}
+
+/* Remove button */
+.remove-btn{
+  border-radius:20px;
+  padding:6px 14px;
+}
+
+/* Grand total row */
+.cart-table tr:last-child th{
+  background:#f1f1f1;
+  font-size:18px;
+}
+/* Grand total bottom border */
+.cart-table tr:last-child th{
+  border-bottom:2px solid #111 !important;
+}
+
+
+/* Bottom actions */
+.cart-actions{
+  display:flex;
+  justify-content:space-between;
+  margin-top:35px;
+}
+
+/* Empty cart */
+.empty-cart{
+  background:#fff;
+  padding:60px;
+  text-align:center;
+  border-radius:14px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.empty-cart h2{
+  margin-bottom:20px;
+}
+
+/* Mobile responsive */
+@media(max-width:768px){
+  .cart-table th,
+  .cart-table td{
+    font-size:13px;
+    padding:10px;
+  }
+
+  .cart-actions{
+    flex-direction:column;
+    gap:15px;
+  }
+
+  .cart-title{
+    font-size:22px;
+  }
+}
+/* ===== GRAND TOTAL HIGHLIGHT ===== */
+
+.cart-table tr:last-child th{
+  background:gold !important;   /* dark background */
+  color:black !important;
+  font-size:20px;
+  font-weight:800;
+  padding:18px;
+}
+
+.cart-table tr:last-child th:first-child{
+  text-align:right;
+}
+
+.cart-table tr:last-child th:last-child{
+  text-align:center;
+}
+/* CHECKOUT STEPS */
+.checkout-steps{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin:30px 0 40px;
+}
+
+.step{
+  text-align:center;
+  font-weight:600;
+  font-size:14px;
+}
+
+.circle{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:#ddd;
+  color:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 5px;
+}
+
+.circle.done{
+  background:#28a745;
+  color:#fff;
+}
+
+.step.active p{
+  color:#28a745;
+}
+
+.line{
+  width:60px;
+  height:2px;
+  background:#ccc;
+}

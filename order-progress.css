@@ -1,0 +1,37 @@
+.order-progress{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:40px 0;
+}
+
+.step{
+  text-align:center;
+}
+
+.step span{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#ccc;
+  color:#fff;
+  font-weight:bold;
+}
+
+.step.active span{
+  background:#28a745;
+}
+
+.line{
+  width:80px;
+  height:4px;
+  background:#ccc;
+  margin:0 10px;
+}
+
+.line.active{
+  background:#28a745;
+}
