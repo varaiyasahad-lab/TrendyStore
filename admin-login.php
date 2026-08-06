@@ -1,190 +1,167 @@
-<?php
-session_start();
+        <?php
+        session_start();
+        include "db.php";
 
-$error = "";
+        $error = "";
 
-if(isset($_POST['login'])){
+        if(isset($_POST['login'])){
 
-    $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
+            $username = trim($_POST['username']);
+            $password = trim($_POST['password']);
 
-    if(
+            $username = mysqli_real_escape_string($conn, $username);
 
-        ($username == "Sahad Varaiya" && $password == "Sahad@2007")
+            $result = mysqli_query($conn, "SELECT * FROM admin WHERE username='$username'");
 
-        ||
+            if(mysqli_num_rows($result) > 0){
 
-        ($username == "Sahad Varaiya" && $password == "Sahad@222")
+                $admin = mysqli_fetch_assoc($result);
 
-    ){
+                // Hashed aur Plain Password dono support karega
+                if(
+                    password_verify($password, $admin['password']) ||
+                    $password === $admin['password']
+                ){
 
-        $_SESSION['admin_logged_in'] = true;
-        $_SESSION['admin_name'] = $username;
+                    $_SESSION['admin_logged_in'] = true;
+                    $_SESSION['admin_id'] = $admin['id'];
+                    $_SESSION['admin_name'] = $admin['username'];
 
-        header("Location: admin-dashboard.php");
-        exit;
+                    header("Location: admin-dashboard.php");
+                    exit;
 
-    }else{
+                }else{
 
-        $error = "Invalid Username or Password";
+                    $error = "Invalid Password";
 
-    }
-}
-?>
+                }
 
-<!DOCTYPE html>
-<html>
-<head>
+            }else{
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+                $error = "Username Not Found";
 
-<title>Admin Login</title>
+            }
+        }
+        ?>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!DOCTYPE html>
+        <html>
+        <head>
 
-<style>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-body{
-    margin:0;
-    background:#f4f6f9;
-    font-family:Arial,sans-serif;
-}
+        <title>Admin Login</title>
 
-.login-wrap{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
-}
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-.login-box{
-    width:100%;
-    max-width:420px;
-    background:#fff;
-    padding:35px;
-    border-radius:20px;
-    box-shadow:0 5px 25px rgba(0,0,0,.12);
-}
+        <style>
 
-.logo{
-    text-align:center;
-    font-size:55px;
-    margin-bottom:10px;
-}
+        body{
+            margin:0;
+            background:#f4f6f9;
+            font-family:Arial,sans-serif;
+        }
 
-.title{
-    text-align:center;
-    font-size:28px;
-    font-weight:700;
-    margin-bottom:5px;
-}
+        .login-wrap{
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:20px;
+        }
 
-.sub{
-    text-align:center;
-    color:#666;
-    margin-bottom:25px;
-}
+        .login-box{
+            width:100%;
+            max-width:420px;
+            background:#fff;
+            padding:35px;
+            border-radius:20px;
+            box-shadow:0 5px 25px rgba(0,0,0,.12);
+        }
 
-.form-control{
-    height:50px;
-}
+        .logo{
+            text-align:center;
+            font-size:55px;
+            margin-bottom:10px;
+        }
 
-.btn-login{
-    width:100%;
-    height:50px;
-    font-size:16px;
-    font-weight:bold;
-}
+        .title{
+            text-align:center;
+            font-size:28px;
+            font-weight:700;
+            margin-bottom:5px;
+        }
 
-.footer-text{
-    text-align:center;
-    margin-top:15px;
-    color:#888;
-    font-size:13px;
-}
+        .sub{
+            text-align:center;
+            color:#666;
+            margin-bottom:25px;
+        }
 
-</style>
+        .form-control{
+            height:50px;
+        }
 
-</head>
+        .btn-login{
+            width:100%;
+            height:50px;
+            font-size:16px;
+            font-weight:bold;
+        }
 
-<body>
+        .footer-text{
+            text-align:center;
+            margin-top:15px;
+            color:#888;
+            font-size:13px;
+        }
 
-<div class="login-wrap">
+        </style>
 
-<div class="login-box">
+        </head>
 
-<div class="logo">🔐</div>
+        <body>
 
-<div class="title">
-Admin Panel
-</div>
+        <div class="login-wrap">
 
-<div class="sub">
-Login to continue
-</div>
+            <div class="login-box">
 
-<?php if(!empty($error)){ ?>
+                <div class="logo">🔐</div>
 
-<div class="alert alert-danger">
-<?= $error ?>
-</div>
+                <div class="title">Admin Panel</div>
 
-<?php } ?>
+                <div class="sub">Login to continue</div>
 
-<form method="POST">
+                <?php if(!empty($error)){ ?>
+                    <div class="alert alert-danger"><?= $error ?></div>
+                <?php } ?>
 
-<div class="mb-3">
+                <form method="POST">
 
-<label class="form-label">
-Username
-</label>
+                    <div class="mb-3">
+                        <label class="form-label">Username</label>
+                        <input type="text" name="username" class="form-control" placeholder="Enter Username" required>
+                    </div>
 
-<input
-type="text"
-name="username"
-class="form-control"
-placeholder="Enter Username"
-required>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" placeholder="Enter Password" required>
+                    </div>
 
-</div>
+                    <button type="submit" name="login" class="btn btn-dark btn-login">
+                        Login
+                    </button>
 
-<div class="mb-3">
+                </form>
 
-<label class="form-label">
-Password
-</label>
+                <div class="footer-text">
+                    Trendy Store Admin Panel
+                </div>
 
-<input
-type="password"
-name="password"
-class="form-control"
-placeholder="Enter Password"
-required>
+            </div>
 
-</div>
+        </div>
 
-<button
-type="submit"
-name="login"
-class="btn btn-dark btn-login">
-
-Login
-
-</button>
-
-</form>
-
-<div class="footer-text">
-
-Trendy Store Admin Panel
-
-</div>
-
-</div>
-
-</div>
-
-</body>
-</html>
+        </body>
+        </html>

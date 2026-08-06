@@ -570,7 +570,7 @@ body{
         <!-- Admin Profile -->
         <div class="admin-profile">
 
-<img src="uploads/admin.jpg" class="admin-img">
+<img src="uploads/admin1.jpg" class="admin-img">
 
 <div class="admin-info">
     <span>👨‍💼 <b>Admin</b></span>

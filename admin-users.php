@@ -124,7 +124,6 @@ value="<?= $_GET['search'] ?? '' ?>">
 <th>Name</th>
 <th>Email</th>
 <th>Mobile</th>
-<th>Address</th>
 <th>Created</th>
 <th>Action</th>
 </tr>
@@ -143,8 +142,6 @@ value="<?= $_GET['search'] ?? '' ?>">
 <td><?= $u['email'] ?></td>
 
 <td><?= $u['mobile'] ?></td>
-
-<td><?= $u['address'] ?></td>
 
 <td><?= $u['created_at'] ?></td>
 

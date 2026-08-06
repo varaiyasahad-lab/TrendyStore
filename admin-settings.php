@@ -12,27 +12,36 @@ include "db.php";
 $message = "";
 
 /* FETCH ADMIN */
-$query = mysqli_query($conn,"SELECT * FROM admin LIMIT 1");
+$admin_id = $_SESSION['admin_id'];
+
+$query = mysqli_query($conn, "SELECT * FROM admin WHERE id='$admin_id'");
 
 if(!$query){
     die("Query Error: " . mysqli_error($conn));
 }
 
 $admin = mysqli_fetch_assoc($query);
+
 /* PASSWORD CHANGE */
 if(isset($_POST['change_password'])){
 
     $old_password = $_POST['old_password'];
     $new_password = $_POST['new_password'];
     $confirm_password = $_POST['confirm_password'];
+    
 
-  if($old_password != $admin['password']){
+if(
+    !password_verify($old_password, $admin['password']) &&
+    $old_password !== $admin['password']
+){
 
-        $message = "<div class='alert alert-danger'>
-        Old Password Incorrect
-        </div>";
+    $message = "<div class='alert alert-danger'>
+    Old Password Incorrect
+    </div>";
 
-    }elseif($new_password != $confirm_password){
+}
+
+    elseif($new_password != $confirm_password){
 
         $message = "<div class='alert alert-warning'>
         New Password & Confirm Password Not Match
@@ -40,17 +49,28 @@ if(isset($_POST['change_password'])){
 
     }else{
 
-        $hash = password_hash($new_password,PASSWORD_DEFAULT);
+     $hash = password_hash($new_password, PASSWORD_DEFAULT);
 
-        mysqli_query($conn,"
-        UPDATE admin
-        SET password='$hash'
-        WHERE id=".$admin['id']."
-        ");
+$update = mysqli_query($conn,"
+UPDATE admin
+SET password='$hash'
+WHERE id='$admin_id'
+");
 
-        $message = "<div class='alert alert-success'>
-        Password Updated Successfully
-        </div>";
+if($update){
+
+    $admin['password'] = $hash;
+
+    $message = "<div class='alert alert-success'>
+    Password Updated Successfully
+    </div>";
+
+}else{
+
+    $message = "<div class='alert alert-danger'>
+    ".mysqli_error($conn)."
+    </div>";
+}
     }
 }
 ?>
@@ -125,17 +145,17 @@ h4{
 <?= $message ?>
 
 <div class="profile-top">
-    <img src="uploads/admin.jpg" class="profile-img">
+    <img src="uploads/admin1.jpg" class="profile-img">
 
     <div>
-        <h4>👨‍💼 Admin</h4>
+     <h4>👨‍💼 <?= htmlspecialchars($admin['username']) ?></h4>
         <p>Manage your account settings</p>
     </div>
 </div>
 
 <div class="info-box">
     
-    <p><strong>Email:</strong> <?= $admin['email'] ?? 'admin@gmail.com' ?></p>
+    <p><strong>Email:</strong> <?= htmlspecialchars($admin['email']) ?></p>
     <p><strong>Role:</strong> Admin</p>
 </div>
 
