@@ -126,6 +126,7 @@ grid-template-columns:1fr;
 <body>
     
  <?php include 'header.php'; ?>
+ 
 <div class="hero">
 <h1>About Trendy Store</h1>
 <p>Your Destination For Fashion & Lifestyle</p>

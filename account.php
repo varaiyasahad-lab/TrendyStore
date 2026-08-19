@@ -30,6 +30,29 @@ if(count($words) > 1 && !empty($user['last_name'])){
     $initials = strtoupper(substr($name,0,1));
 }
 
+/* ================= UPDATE PROFILE ================= */
+$message = "";
+
+if(isset($_POST['update_profile'])){
+
+    $first_name = mysqli_real_escape_string($conn, $_POST['first_name']);
+    $last_name  = mysqli_real_escape_string($conn, $_POST['last_name']);
+
+    $update = mysqli_query($conn,"
+        UPDATE users
+        SET first_name='$first_name',
+            last_name='$last_name'
+        WHERE id='$user_id'
+    ");
+
+    if($update){
+        header("Location: account.php");
+        exit;
+    }else{
+        $message = "Profile Update Failed";
+    }
+}
+
 /* ================= RANDOM COLOR ================= */
 $colors = ["#ff6b6b","#6bcB77","#4d96ff","#f06595","#ffa94d","#845ef7"];
 $bg = $colors[array_rand($colors)];
@@ -141,14 +164,28 @@ body{
   </div>
 <?php } ?>
 
-<form method="post" enctype="multipart/form-data">
-  <div>
-    <input type="text" name="name" value="<?php echo $user['first_name']; ?>">
-  </div>
-  <div>
-    <input type="file" name="profile">
-  </div>
-  <button name="update_profile">Update</button>
+<form method="POST" class="profile-form">
+
+<input
+type="text"
+name="first_name"
+value="<?php echo htmlspecialchars($user['first_name']); ?>"
+placeholder="First Name">
+
+<input
+type="text"
+name="last_name"
+value="<?php echo htmlspecialchars($user['last_name']); ?>"
+placeholder="Last Name">
+
+<p style="color:#666;margin:10px 0;">
+    <?php echo htmlspecialchars($user['mobile']); ?>
+</p>
+
+<button type="submit" name="update_profile">
+    Update Profile
+</button>
+
 </form>
 
 </div>

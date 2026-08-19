@@ -190,8 +190,8 @@ body{
 
 .overlay h1{
     font-size:48px;
-    line-height:1.2;
-    margin-bottom:20px;
+        line-height:1.2;
+        margin-bottom:20px;
     font-style: italic;
 }
 
@@ -476,6 +476,12 @@ input:focus{
 
 #registerForm > input{
     margin-bottom:20px;
+}
+.msg{
+    color: #dc3545;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 10px 0;
 }
 </style>
 

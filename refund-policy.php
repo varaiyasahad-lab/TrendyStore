@@ -77,12 +77,38 @@ body{
     border-radius:12px;
     line-height:1.7;
 }
+.back-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin:15px 14px 5px;
+    padding:10px 16px;
+    background:#111;
+    color:#fff;
+    border-radius:8px;
+    font-size:14px;
+    font-weight:bold;
+    text-decoration:none;
+    transition:0.3s;
+}
 
+.back-btn:hover{
+    background:#333;
+}
+
+.back-arrow{
+    font-size:20px;
+    line-height:1;
+}
 </style>
 </head>
 
 <body>
  <?php include 'header.php'; ?>
+ <a href="account.php" class="back-btn">
+    <span class="back-arrow">←</span>
+    Back to Account
+</a>
 <div class="header">
     Returns & Refund Policy
 </div>
