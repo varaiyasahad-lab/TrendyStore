@@ -2,7 +2,6 @@
 session_start();
 include "db.php";
 
-/* CATEGORY FILTER */
 
 $gender   = $_GET['gender'] ?? 'men';
 $cat      = $_GET['cat'] ?? 'all';
@@ -14,7 +13,6 @@ $brand    = $_GET['brand'] ?? '';
 $occasion = $_GET['occasion'] ?? '';
 $sort     = $_GET['sort'] ?? '';
 
-/* MAIN QUERY */
 
 $sql = "SELECT * FROM products WHERE gender='$gender'";
 if(!empty($cat) && $cat != 'all'){
@@ -28,7 +26,6 @@ if(!empty($cat) && $cat != 'all'){
 
 
 
-/* PRICE */
 
 if(!empty($price)){
 
@@ -44,7 +41,6 @@ $maxPrice = isset($priceData[1]) ? (int)$priceData[1] : 999999;
 $sql .= " AND price >= $minPrice AND price <= $maxPrice";
 }
 
-/* COLOR */
 
 if($color != ''){
 
@@ -61,7 +57,6 @@ WHERE LOWER(color_name) IN ($colorValues)
 )";
 }
 
-/* SIZE */
 
 if($size != ''){
 
@@ -78,7 +73,6 @@ WHERE UPPER(size) IN ($sizeValues)
 )";
 }
 
-/* DISCOUNT */
 
 if($discount != ''){
 
@@ -89,7 +83,6 @@ $discountValues = "'" . implode("','", $discountArray) . "'";
 $sql .= " AND discount IN ($discountValues)";
 }
 
-/* BRAND */
 
 if($brand != ''){
 
@@ -101,7 +94,6 @@ $brandValues = "'" . implode("','", $brandArray) . "'";
 $sql .= " AND LOWER(brand) IN ($brandValues)";
 }
 
-/* OCCASION */
 if($occasion != ''){
 
 $occasionArray = is_array($occasion) ? $occasion : explode(',', $occasion);
@@ -111,7 +103,6 @@ $occasionValues = "'" . implode("','", $occasionArray) . "'";
 
 $sql .= " AND LOWER(occasion) IN ($occasionValues)";
 }
-/* SORT */
 
 if($sort == 'low'){
 $sql .= " ORDER BY price ASC";
@@ -126,12 +117,10 @@ else{
 $sql .= " ORDER BY id DESC";
 }
 
-/* RESULT */
 
 $result = mysqli_query($conn, $sql);
 
 
-/* CART COUNT */
 
 $cartCount = 0;
 
@@ -217,7 +206,6 @@ padding:3px 7px;
 border-radius:50%;
 }
 
-/* TITLE */
 
 .page-title{
 text-align:center;
@@ -228,7 +216,6 @@ color:#2874f0;
 letter-spacing:2px;
 }
 
-/* GRID */
 
 .grid{
 display:grid;
@@ -237,7 +224,6 @@ gap:22px;
 padding:20px;
 }
 
-/* CARD */
 
 .card{
 background:#fff;
@@ -254,7 +240,6 @@ transform:translateY(-6px);
 box-shadow:0 15px 30px rgba(0,0,0,.15);
 }
 
-/* IMAGE */
 
 .image-box{
 background:#fff;
@@ -269,7 +254,6 @@ object-fit:contain;
 display:block;
 }
 
-/* WISHLIST */
 
 .wishlist{
 position:absolute;
@@ -292,7 +276,6 @@ font-size:20px;
 color:#000;
 }
 
-/* DETAILS */
 
 .details{
 padding:15px;
@@ -336,7 +319,6 @@ font-weight:bold;
 color:green;
 }
 
-/* BUTTON */
 
 .buttons{
 margin-top:18px;
@@ -359,7 +341,6 @@ transition:.3s;
 opacity:.9;
 }
 
-/* MOBILE */
 
 @media(max-width:768px){
 
@@ -506,7 +487,7 @@ margin:15px 0;
     width:100%;
     height:calc(100vh - 160px);
     overflow:hidden;
-    margin-top:0;   /* remove extra margin */
+    margin-top:0;
 } 
 
 .filter-left{
@@ -696,7 +677,6 @@ cursor:pointer;
 $gender = $_GET['gender'] ?? 'men';
 $cat = $_GET['cat'] ?? 'all';
 
-/* save last selected category */
 if($cat != 'all'){
     $_SESSION['last_cat'] = $cat;
 }
@@ -707,12 +687,10 @@ $last_cat = $_SESSION['last_cat'] ?? '';
 <div class="breadcrumb">
     <a href="index.php">HOME</a> /
 
-    <!-- MEN page -->
     <a href="<?= $gender ?>-products.php?cat=all">
         <?= strtoupper($gender) ?>
     </a>
 
-    <!-- Last selected category -->
     <?php if($last_cat){ ?>
         /
         <a href="<?= $gender ?>-products.php?cat=<?= $last_cat ?>">
@@ -751,7 +729,6 @@ if(!empty($_GET['occasion'])){
 </div>
 
 </div>
-<!-- PRODUCTS -->
 
 <div class="grid">
 
@@ -777,7 +754,6 @@ round(
 <div class="card"
 onclick="window.location='product-detail.php?id=<?= $row['id'] ?>'">
 
-<!-- IMAGE -->
 
 <div class="image-box">
 
@@ -789,7 +765,6 @@ onclick="window.location='product-detail.php?id=<?= $row['id'] ?>'">
 
 </div>
 
-<!-- DETAILS -->
 
 <div class="details">
 
@@ -825,7 +800,6 @@ onclick="window.location='product-detail.php?id=<?= $row['id'] ?>'">
 In Stock
 </div>
 
-<!-- BUTTON -->
 
 <div class="buttons">
 
@@ -865,7 +839,6 @@ No Products Found
 
 <div class="filter-layout">
 
-    <!-- LEFT SIDE -->
     <div class="filter-left">
 <div onclick="showTab('gender', this)">Gender</div>
 <div onclick="showTab('category', this)">Category</div>
@@ -878,10 +851,8 @@ No Products Found
 
     </div>
 
-    <!-- RIGHT SIDE -->
 
         <div class="filter-right">
-<!-- GENDER -->
 <div id="gender" class="tab-content">
 
 
@@ -900,7 +871,6 @@ AND category='$cat'
 </label>
 </div>
 
-<!-- CATEGORY -->
 <div id="category" class="tab-content" style="display:none;">
 
 <?php
@@ -926,7 +896,6 @@ while($c = mysqli_fetch_assoc($catQuery)){
 
 </div>
 
-<!-- PRICE -->
 <div id="price" class="tab-content" style="display:none;">
 
 <?php
@@ -1061,7 +1030,6 @@ while($d = mysqli_fetch_assoc($discountQuery)){
 
 </div>
 
-<!-- BRAND -->
 <div id="brand" class="tab-content" style="display:none;">
 
 <?php
@@ -1087,7 +1055,6 @@ while($b = mysqli_fetch_assoc($brandQuery)){
 
 
 
-<!-- OCCASION -->
 <div id="occasion" class="tab-content" style="display:none;">
 
 <?php
@@ -1179,7 +1146,6 @@ function applyFilter(){
 
 let params = new URLSearchParams();
 
-/* CATEGORY */
 let cats = [];
 document.querySelectorAll("input[name='cat[]']:checked").forEach(function(el){
 cats.push(el.value);
@@ -1188,7 +1154,6 @@ if(cats.length > 0){
 params.set("cat", cats[0]);
 }
 
-/* PRICE */
 let minPrice = document.getElementById("minPrice").value;
 let maxPrice = document.getElementById("maxPrice").value;
 
@@ -1199,7 +1164,6 @@ if(
 params.set("price", minPrice + "-" + maxPrice);
 }
 
-/* COLOR */
 let colors = [];
 document.querySelectorAll("input[name='color[]']:checked").forEach(function(el){
 colors.push(el.value);
@@ -1208,7 +1172,6 @@ if(colors.length > 0){
 params.set("color", colors.join(","));
 }
 
-/* SIZE */
 let sizes = [];
 document.querySelectorAll("input[name='size[]']:checked").forEach(function(el){
 sizes.push(el.value);
@@ -1217,7 +1180,6 @@ if(sizes.length > 0){
 params.set("size", sizes.join(","));
 }
 
-/* DISCOUNT */
 let discounts = [];
 document.querySelectorAll("input[name='discount[]']:checked").forEach(function(el){
 discounts.push(el.value);
@@ -1226,7 +1188,6 @@ if(discounts.length > 0){
 params.set("discount", discounts.join(","));
 }
 
-/* BRAND */
 let brands = [];
 document.querySelectorAll("input[name='brand[]']:checked").forEach(function(el){
 brands.push(el.value);
@@ -1235,7 +1196,6 @@ if(brands.length > 0){
 params.set("brand", brands.join(","));
 }
 
-/* OCCASION */
 let occasions = [];
 document.querySelectorAll("input[name='occasion[]']:checked").forEach(function(el){
 occasions.push(el.value);
@@ -1244,7 +1204,6 @@ if(occasions.length > 0){
 params.set("occasion", occasions.join(","));
 }
 
-/* GENDER */
 let gender = document.querySelector("input[name='gender']:checked");
 if(gender){
 params.set("gender", gender.value);

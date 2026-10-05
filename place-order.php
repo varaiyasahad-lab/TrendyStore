@@ -5,25 +5,14 @@
     session_start();
     include "db.php";
 
-    /* ======================
-    LOGIN CHECK
-    ====================== */
     if (!isset($_SESSION['user_id'])) {
         die("Login Required");
     }
 
-    /* ======================
-    PRODUCT CHECK
-    ====================== */
     if (empty($_SESSION['cart']) && empty($_SESSION['buy_now'])) {
         die("No Product Found");
     }
 
-   
-
-    /* ======================
-    CUSTOMER DATA
-    ====================== */
     $user_id = $_SESSION['user_id'];
 
     $getAddress = mysqli_query($conn,"
@@ -40,13 +29,8 @@
     $name    = $conn->real_escape_string($addr['fullname']);
     $mobile  = $conn->real_escape_string($addr['mobile']);
     $address = $conn->real_escape_string($addr['address']);
-
-    /* ======================
-    TOTAL CALCULATION
-    ====================== */
     $total = 0;
 
-    /* CART TOTAL */
     if(!empty($_SESSION['cart'])){
 
         foreach ($_SESSION['cart'] as $item) {
@@ -58,7 +42,6 @@
         }
     }
 
-    /* BUY NOW TOTAL */
     $product = null;
 
     if(!empty($_SESSION['buy_now'])){
@@ -86,28 +69,22 @@
         }
     }
 
-    /* FINAL CHECK */
     if($total <= 0){
 
         die("Total Calculation Failed");
     }
 
-    /* ======================
-VOUCHER / COINS
-====================== */
 
 
 $voucher = $_POST['coupon_select'] ?? ($_POST['voucher_code'] ?? '');
 $discount = 0;
 
-/* FIRST ORDER CHECK */
 $firstOrderQ = $conn->query("
 SELECT id FROM orders
 WHERE user_id='$user_id'
 LIMIT 1
 ");
 
-/* WELCOME100 */
 if($voucher == "WELCOME100"){
 
     if($firstOrderQ->num_rows > 0){
@@ -119,17 +96,14 @@ if($voucher == "WELCOME100"){
     $discount = 100;
 }
 
-/* SAVE100 */
 elseif($voucher == "SAVE100" && $total >= 899){
     $discount = 100;
 }
 
-/* SAVE200 */
 elseif($voucher == "SAVE200" && $total >= 1099){
     $discount = 200;
 }
 
-/* SAVE300 */
 elseif($voucher == "SAVE300" && $total >= 1599){
     $discount = 300;
 }
@@ -142,10 +116,8 @@ else{
         exit;
     }
 }
-/* Final Total */
-$final_total = isset($_POST['final_total']) && $_POST['final_total'] != ''
-    ? (int)$_POST['final_total']
-    : ($total - $discount);
+
+$final_total = $total - $discount;
 
 if($final_total < 0){
     $final_total = 0;

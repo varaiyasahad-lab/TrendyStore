@@ -2,7 +2,6 @@
 session_start();
 include "db.php";
 
-/* ================= LOGIN CHECK ================= */
 if(!isset($_SESSION['user_id'])){
     header("Location: auth.php");
     exit;
@@ -10,7 +9,6 @@ if(!isset($_SESSION['user_id'])){
 
 $user_id = $_SESSION['user_id'];
 
-/* ================= FETCH NOTIFICATIONS ================= */
 $get = mysqli_query($conn, "
     SELECT * FROM notifications
     WHERE user_id='$user_id'
@@ -41,8 +39,6 @@ body{
     color:#111;
     margin-top: 95px;
 }
-
-/* ================= HEADER ================= */
 
 .page-header{
     background:#fff;
@@ -89,15 +85,11 @@ body{
     margin-top:3px;
 }
 
-/* ================= MAIN ================= */
-
 .notification-container{
     width:94%;
     max-width:850px;
     margin:30px auto 50px;
 }
-
-/* ================= NOTIFICATION CARD ================= */
 
 .notification-link{
     text-decoration:none;
@@ -127,8 +119,6 @@ body{
     box-shadow:0 8px 22px rgba(0,0,0,0.10);
 }
 
-/* ================= ICON ================= */
-
 .notification-icon{
     width:52px;
     height:52px;
@@ -146,8 +136,6 @@ body{
     font-size:22px;
 }
 
-/* ================= PRODUCT IMAGE ================= */
-
 .product-img{
     width:72px;
     height:72px;
@@ -159,8 +147,6 @@ body{
 
     border:1px solid #eee;
 }
-
-/* ================= CONTENT ================= */
 
 .notification-content{
     flex:1;
@@ -192,7 +178,6 @@ body{
     color:#999;
 }
 
-/* ================= ARROW ================= */
 
 .notification-arrow{
     width:30px;
@@ -206,7 +191,6 @@ body{
     font-size:18px;
 }
 
-/* ================= EMPTY ================= */
 
 .empty-box{
     background:#fff;
@@ -248,7 +232,6 @@ body{
     font-size:14px;
 }
 
-/* ================= MOBILE ================= */
 
 @media(max-width:600px){
 
@@ -339,7 +322,6 @@ body{
     <span class="back-arrow">←</span>
     Back to Account
 </a>
-<!-- ================= HEADER ================= -->
 
 <div class="page-header">
 
@@ -363,7 +345,6 @@ body{
 </div>
 
 
-<!-- ================= NOTIFICATIONS ================= -->
 
 <div class="notification-container">
 
@@ -382,13 +363,11 @@ href="product-detail.php?id=<?php echo (int)$row['product_id']; ?>"
 
 <div class="notification-card">
 
-    <!-- Notification Icon -->
     <div class="notification-icon">
         🔔
     </div>
 
 
-    <!-- Product Image -->
     <?php if(!empty($row['product_image'])){ ?>
 
         <img
@@ -400,7 +379,7 @@ href="product-detail.php?id=<?php echo (int)$row['product_id']; ?>"
     <?php } ?>
 
 
-    <!-- Notification Content -->
+   
     <div class="notification-content">
 
         <h3>
@@ -426,7 +405,7 @@ href="product-detail.php?id=<?php echo (int)$row['product_id']; ?>"
     </div>
 
 
-    <!-- Arrow -->
+  
     <div class="notification-arrow">
         ›
     </div>
@@ -443,7 +422,6 @@ href="product-detail.php?id=<?php echo (int)$row['product_id']; ?>"
 
 ?>
 
-<!-- ================= EMPTY ================= -->
 
 <div class="empty-box">
 

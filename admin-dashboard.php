@@ -13,41 +13,41 @@
     $adminName = $_SESSION['admin_name'] ?? 'Admin';
 $adminImage = $_SESSION['admin_image'] ?? 'admin.png';
 
-    /* USERS */
+ 
     $users = mysqli_fetch_assoc(mysqli_query($conn,"
     SELECT COUNT(*) total FROM users
     "));
 
-    /* PRODUCTS */
+
     $products = mysqli_fetch_assoc(mysqli_query($conn,"
     SELECT COUNT(*) total FROM products
     "));
 
-    /* ORDERS */
+   
     $orders = mysqli_fetch_assoc(mysqli_query($conn,"
     SELECT COUNT(*) total FROM orders
     "));
 
-    /* REVENUE */
+   
     $revenue = mysqli_fetch_assoc(mysqli_query($conn,"
     SELECT IFNULL(SUM(total),0) total FROM orders
     "));
 
-    /* TODAY ORDERS */
+  
     $todayOrders = mysqli_fetch_assoc(mysqli_query($conn,"
     SELECT COUNT(*) total
     FROM orders
     WHERE DATE(created_at)=CURDATE()
     "));
 
-    /* WEEKLY ORDERS */
+    
     $weekOrders = mysqli_fetch_assoc(mysqli_query($conn,"
     SELECT COUNT(*) total
     FROM orders
     WHERE YEARWEEK(created_at)=YEARWEEK(NOW())
     "));
 
-    /* MONTHLY ORDERS */
+ 
     $monthOrders = mysqli_fetch_assoc(mysqli_query($conn,"
     SELECT COUNT(*) total
     FROM orders
@@ -55,21 +55,20 @@ $adminImage = $_SESSION['admin_image'] ?? 'admin.png';
     AND YEAR(created_at)=YEAR(NOW())
     "));
 
-    /* TODAY SALES */
+   
     $todaySales = mysqli_fetch_assoc(mysqli_query($conn,"
     SELECT IFNULL(SUM(total),0) total
     FROM orders
     WHERE DATE(created_at)=CURDATE()
     "));
 
-    /* WEEK SALES */
+
     $weekSales = mysqli_fetch_assoc(mysqli_query($conn,"
     SELECT IFNULL(SUM(total),0) total
     FROM orders
     WHERE YEARWEEK(created_at)=YEARWEEK(NOW())
     "));
 
-    /* MONTH SALES */
     $monthSales = mysqli_fetch_assoc(mysqli_query($conn,"
     SELECT IFNULL(SUM(total),0) total
     FROM orders
@@ -79,47 +78,50 @@ $adminImage = $_SESSION['admin_image'] ?? 'admin.png';
 
     
     
-    /* TOTAL VISITORS */
+    
     $visitors = mysqli_fetch_assoc(mysqli_query($conn,"
     SELECT COUNT(*) total
     FROM site_visits
     "));
 
-    /* TODAY VISITORS */
+   
     $todayVisitors = mysqli_fetch_assoc(mysqli_query($conn,"
     SELECT COUNT(*) total
     FROM site_visits
     WHERE DATE(visit_date)=CURDATE()
     "));
 
-    /* WEEKLY VISITORS */
+
     $weekVisitors = mysqli_fetch_assoc(mysqli_query($conn,"
     SELECT COUNT(*) total
     FROM site_visits
     WHERE YEARWEEK(visit_date)=YEARWEEK(NOW())
     "));
 
-    /* MONTHLY VISITORS */
+   
     $monthVisitors = mysqli_fetch_assoc(mysqli_query($conn,"
     SELECT COUNT(*) total
     FROM site_visits
     WHERE MONTH(visit_date)=MONTH(NOW())
     AND YEAR(visit_date)=YEAR(NOW())
     "));
-    /* PENDING ORDERS */
+
+    
 $pendingOrders = mysqli_fetch_assoc(mysqli_query($conn,"
 SELECT COUNT(*) total
 FROM orders
 WHERE order_status='Pending'
 "));
 
-/* DELIVERED ORDERS */
+
+
 $deliveredOrders = mysqli_fetch_assoc(mysqli_query($conn,"
 SELECT COUNT(*) total
 FROM orders
 WHERE order_status='Delivered'
 "));
-/* RETURN ORDERS */
+
+
 $returnOrders = mysqli_fetch_assoc(mysqli_query($conn,"
 SELECT COUNT(*) total
 FROM orders
@@ -150,7 +152,8 @@ body{
     font-family:'Segoe UI',sans-serif;
 }
 
-/* TOPBAR */
+
+
 
 .topbar{
     position:fixed;
@@ -173,7 +176,8 @@ body{
     color:#111827;
 }
 
-/* SIDEBAR */
+
+
 
 .sidebar{
     position:fixed;
@@ -215,7 +219,8 @@ body{
     padding-left:35px;
 }
 
-/* CONTENT */
+
+
 
 .content{
     margin-left:250px;
@@ -223,7 +228,8 @@ body{
     padding:30px;
 }
 
-/* CARDS */
+
+
 
 .card-box{
     border:none;
@@ -263,7 +269,8 @@ body{
     background:rgba(255,255,255,.15);
 }
 
-/* COLORS */
+
+
 
 .purple{
     background:linear-gradient(135deg,#7c3aed,#9333ea);
@@ -297,7 +304,7 @@ body{
     background:linear-gradient(135deg,#0891b2,#22d3ee);
 }
 
-/* TABLES */
+
 
 .section-box{
     background:#fff;
@@ -315,7 +322,8 @@ body{
     font-size:13px;
 }
 
-/* RESPONSIVE */
+
+
 
 @media(max-width:768px){
 
@@ -426,7 +434,8 @@ body{
     gap:20px;
 }
 
-/* Search */
+
+
 .search-box{
     display:flex;
     align-items:center;
@@ -450,7 +459,8 @@ body{
     cursor:pointer;
 }
 
-/* Notification */
+
+
 .notification{
     position:relative;
     font-size:24px;
@@ -468,7 +478,8 @@ body{
     border-radius:50%;
 }
 
-/* Admin Profile */
+
+
 .admin-profile{
     position:relative;
     display:flex;
@@ -495,7 +506,8 @@ body{
     margin-left:5px;
 }
 
-/* Dropdown */
+
+
 .dropdown-menu-box{
     position:absolute;
     top:55px;
@@ -546,28 +558,32 @@ body{
 
    <div class="topbar">
 
-    <!-- Left -->
+   
     <div>
         <h2>📊 Admin Dashboard</h2>
         <small>Welcome Back Admin 👋</small>
     </div>
 
-    <!-- Right -->
+    
+    
     <div class="topbar-right">
 
-        <!-- Search -->
+      
+    
         <form action="admin-search.php" method="GET" class="search-box">
             <input type="text" name="search" placeholder="Search...">
             <button type="submit">🔍</button>
         </form>
 
-        <!-- Notification -->
+    
+        
         <a href="admin-orders.php" class="notification">
             🔔
             <span class="badge">67</span>
         </a>
 
-        <!-- Admin Profile -->
+      
+        
         <div class="admin-profile">
 
 <img src="uploads/admin1.jpg" class="admin-img">

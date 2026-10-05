@@ -2,12 +2,12 @@
 session_start();
 include "db.php";
 
-/* ====== SESSION MESSAGES ====== */
+
 $login_msg = $_SESSION['login_error'] ?? "";
 $register_msg = $_SESSION['register_error'] ?? "";
 unset($_SESSION['login_error'], $_SESSION['register_error']);
 
-/* ====== REGISTER ====== */
+
 if (isset($_POST['register'])) {
 
     $fname  = trim($_POST['fname']);
@@ -58,7 +58,7 @@ if (isset($_POST['register'])) {
 }
 
 
-/* ===== LOGIN ===== */
+
 
 if(isset($_POST['login'])){
 
@@ -155,7 +155,7 @@ body{
     box-shadow:0 25px 60px rgba(0,0,0,.18);
 }
 
-/* LEFT */
+
 
 .left{
     width:45%;
@@ -229,7 +229,7 @@ body{
     font-size:13px;
 }
 
-/* RIGHT */
+
 
 .right{
     width:55%;
@@ -257,7 +257,7 @@ body{
     background:#eee;
 }
 
-/* Tabs */
+
 
 .tabs{
     display:flex;
@@ -283,7 +283,7 @@ body{
     color:#fff;
 }
 
-/* Inputs */
+
 
 input{
     width:100%;
@@ -378,7 +378,7 @@ input:focus{
     margin:0;
 }
 
-/* Button */
+
 
 .btn{
     width:100%;
@@ -421,7 +421,7 @@ input:focus{
     background:#ddd;
 }
 
-/* Social */
+
 
 
 
@@ -432,7 +432,7 @@ input:focus{
     font-size:14px;
 }
 
-/* Responsive */
+
 
 @media(max-width:900px){
 
@@ -491,7 +491,7 @@ input:focus{
 
 <div class="container">
 
-<!-- LEFT -->
+
 
 <div class="left">
 
@@ -543,7 +543,7 @@ and amazing offers.
 
 </div>
 
-<!-- RIGHT -->
+
 
 <div class="right">
 
@@ -577,7 +577,7 @@ Register
 
 </div>
 
-<!-- LOGIN -->
+
 
 <form
 
@@ -653,7 +653,7 @@ Login
 
 </form>
 
-<!-- REGISTER -->
+
 
 <form
 

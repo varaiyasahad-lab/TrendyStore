@@ -7,9 +7,7 @@ if(!isset($_POST['order_code'])){
 
 $order_code = $conn->real_escape_string($_POST['order_code']);
 
-/* =========================
-   IF CONFIRM CANCEL
-========================= */
+
 if(isset($_POST['confirm_cancel'])){
 
     $reason = $conn->real_escape_string($_POST['reason']);

@@ -22,7 +22,7 @@ body{
     margin-top: 120px;
 }
 
-/* Header */
+
 .top-bar{
     background:#111;
     color:#fff;
@@ -32,7 +32,7 @@ body{
     font-weight:bold;
 }
 
-/* Main Box */
+
 .care-container{
     width:95%;
     max-width:1100px;
@@ -42,7 +42,7 @@ body{
     gap:20px;
 }
 
-/* Card */
+
 .care-card{
     background:#fff;
     border-radius:14px;
@@ -67,7 +67,7 @@ body{
     font-size:15px;
 }
 
-/* Contact Buttons */
+
 .contact-btn{
     display:inline-block;
     margin-top:15px;
@@ -84,7 +84,7 @@ body{
     background:#ff6600;
 }
 
-/* Form */
+
 form{
     display:flex;
     flex-direction:column;
@@ -121,7 +121,7 @@ button:hover{
     background:#ff6600;
 }
 
-/* Mobile */
+
 @media(max-width:768px){
 
     .top-bar{
@@ -169,12 +169,12 @@ button:hover{
     Back to Account
 </a>
 <div class="top-bar">
-    Customer Care Support
+    Contact Us
 </div>
 
 <div class="care-container">
 
-    <!-- Contact -->
+
     <div class="care-card">
         <h2>Contact Us</h2>
 
@@ -196,7 +196,7 @@ button:hover{
         </a>
     </div>
 
-    <!-- FAQ -->
+ 
     <div class="care-card">
         <h2>FAQs</h2>
 
@@ -209,7 +209,7 @@ button:hover{
         </p>
     </div>
 
-    <!-- Support Form -->
+  
     <div class="care-card">
         <h2>Send Message</h2>
 

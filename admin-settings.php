@@ -11,7 +11,7 @@ include "db.php";
 
 $message = "";
 
-/* FETCH ADMIN */
+
 $admin_id = $_SESSION['admin_id'];
 
 $query = mysqli_query($conn, "SELECT * FROM admin WHERE id='$admin_id'");
@@ -22,7 +22,7 @@ if(!$query){
 
 $admin = mysqli_fetch_assoc($query);
 
-/* PASSWORD CHANGE */
+
 if(isset($_POST['change_password'])){
 
     $old_password = $_POST['old_password'];

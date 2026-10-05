@@ -17,7 +17,6 @@
 
                 $admin = mysqli_fetch_assoc($result);
 
-                // Hashed aur Plain Password dono support karega
                 if(
                     password_verify($password, $admin['password']) ||
                     $password === $admin['password']

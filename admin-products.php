@@ -7,7 +7,7 @@ if(!isset($_SESSION['admin_logged_in'])){
 }
 
 include "db.php";
-/* SEARCH */
+
 
 $search = $_GET['search'] ?? '';
 
@@ -24,8 +24,6 @@ if(!empty($search)){
     ";
 }
 
-/* PAGINATION */
-
 $limit = 10;
 
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
@@ -36,7 +34,7 @@ if($page < 1){
 
 $start = ($page - 1) * $limit;
 
-/* TOTAL PRODUCTS */
+
 
 $totalResult = mysqli_query($conn,"
 SELECT COUNT(*) total
@@ -50,7 +48,7 @@ $totalProducts = $totalRow['total'];
 
 $totalPages = ceil($totalProducts / $limit);
 
-/* PRODUCTS */
+
 
 $result = mysqli_query($conn,"
 SELECT *
@@ -291,9 +289,6 @@ Delete
 </tbody>
 
 </table>
-
-<!-- PAGINATION -->
-
 
 
 <nav>

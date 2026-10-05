@@ -20,7 +20,7 @@ if($page < 1){
 
 $start = ($page - 1) * $limit;
 
-/* COUNT */
+
 $countQuery = "
 SELECT COUNT(*) as total FROM (
 
@@ -53,7 +53,6 @@ $countRow = mysqli_fetch_assoc($countResult);
 $totalResults = $countRow['total'];
 $totalPages = ceil($totalResults / $limit);
 
-/* MAIN SEARCH */
 $query = "
 
 SELECT 
@@ -171,7 +170,7 @@ value="<?= htmlspecialchars($search) ?>">
 </tbody>
 </table>
 
-<!-- PAGINATION -->
+
 
 <nav>
 <ul class="pagination justify-content-center">

@@ -9,7 +9,7 @@
 
     $user_id = $_SESSION['user_id'];
 
-    /* EDIT FETCH */
+
 
     $editData = null;
 
@@ -27,7 +27,7 @@
     }
 
 
-    /* UPDATE ADDRESS */
+ 
 
     if(isset($_POST['update'])){
 
@@ -56,7 +56,7 @@
     }
 
 
-    /* SAVE ADDRESS */
+
 
     if(isset($_POST['save'])){
 
@@ -79,7 +79,6 @@
     }
 
 
-    /* DELETE ADDRESS */
 
     if(isset($_GET['delete'])){
 
@@ -136,7 +135,7 @@
         font-size:22px;
     }
 
-    /* ADD BUTTON */
+  
 
     .add-btn{
         background:#000;
@@ -147,7 +146,6 @@
         font-size:14px;
     }
 
-    /* CONTAINER */
 
     .container{
         width:95%;
@@ -155,7 +153,7 @@
         margin:20px auto;
     }
 
-    /* FORM BOX */
+ 
 
     .form-box{
         background:#fff;
@@ -218,7 +216,7 @@
         font-size:14px;
     }
 
-    /* DELETE BUTTON */
+
 
     .delete-btn{
         position:absolute;
@@ -233,7 +231,7 @@
         font-size:12px;
     }
 
-    /* EDIT BUTTON */
+
 
     .edit-btn{
         position:absolute;
@@ -294,7 +292,7 @@
 
     <div class="container">
 
-    <!-- FORM -->
+    
 
     <div class="form-box" id="addressForm"
     style="<?php if($editData){ echo 'display:block;'; } ?>">
@@ -359,7 +357,7 @@
 
     </div>
 
-    <!-- SHOW ADDRESS -->
+
 
     <?php
 

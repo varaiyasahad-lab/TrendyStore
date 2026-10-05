@@ -24,13 +24,13 @@ if(!$product){
     die("Product Not Found");
 }
 
-/* FETCH SIZES */
+
 $sizes = mysqli_query($conn,"
 SELECT * FROM product_sizes
 WHERE product_id='$id'
 ");
 
-/* FETCH COLORS */
+
 $colors = mysqli_query($conn,"
 SELECT * FROM product_colors
 WHERE product_id='$id'
@@ -46,7 +46,7 @@ if(isset($_POST['update'])){
     $popular     = isset($_POST['popular']) ? 1 : 0;
     $best_seller = isset($_POST['best_seller']) ? 1 : 0;
 
-    /* UPDATE MAIN PRODUCT */
+   
 $update = mysqli_query($conn,"
 UPDATE products
 SET
@@ -80,7 +80,7 @@ if(!$size_update){
         }
     }
 
-    /* UPDATE COLORS */
+
     if(isset($_POST['color_name'])){
         foreach($_POST['color_name'] as $color_id => $color){
 

@@ -734,92 +734,171 @@ $category = strtolower($product['category']);
 
     <script>
 
-    function changeQty(v){
-    let qty=document.getElementById("qty");
-    let hidden=document.getElementById("hiddenQty");
-    let val=parseInt(qty.value);
-    if(val+v>=1){
-    qty.value=val+v;
-    hidden.value=val+v;
-    }
+let selectedStock = 1;
+
+function changeQty(v){
+
+    let qty = document.getElementById("qty");
+    let hidden = document.getElementById("hiddenQty");
+
+    let val = parseInt(qty.value) || 1;
+    let newVal = val + v;
+
+    if(newVal < 1){
+        newVal = 1;
     }
 
-    function selectSize(el,size,price,stock){
-    document.querySelectorAll(".size span").forEach(s=>s.classList.remove("active"));
+    if(selectedStock > 0 && newVal > selectedStock){
+        newVal = selectedStock;
+        alert("Only " + selectedStock + " item available in stock.");
+    }
+
+    if(selectedStock <= 0){
+        newVal = 0;
+    }
+
+    qty.value = newVal;
+    hidden.value = newVal;
+}
+
+
+function selectSize(el,size,price,stock){
+
+    document.querySelectorAll(".size span").forEach(s=>{
+        s.classList.remove("active");
+    });
+
     el.classList.add("active");
-    document.getElementById("size").value=size;
-    document.getElementById("finalPrice").value=price;
-    document.getElementById("priceDisplay").innerHTML="₹"+price;
-    document.getElementById("stockDisplay").innerHTML=
-    stock<=5
-    ? "<span style='color:red'>Only "+stock+" left!</span>"
-    : "<span style='color:green'>"+stock+" available</span>";
+
+    document.getElementById("size").value = size;
+    document.getElementById("finalPrice").value = price;
+    document.getElementById("priceDisplay").innerHTML = "₹" + price;
+
+    selectedStock = parseInt(stock) || 0;
+
+    let qty = document.getElementById("qty");
+    let hidden = document.getElementById("hiddenQty");
+
+    if(selectedStock > 0){
+        qty.value = 1;
+        hidden.value = 1;
+    }else{
+        qty.value = 0;
+        hidden.value = 0;
     }
 
-    function selectColor(el,img){
+    document.getElementById("stockDisplay").innerHTML =
+        selectedStock <= 5
+        ? "<span style='color:red'>Only " + selectedStock + " left!</span>"
+        : "<span style='color:green'>" + selectedStock + " available</span>";
+}
 
-    document.querySelectorAll(".colors img").forEach(i=>i.classList.remove("active"));
+
+function selectColor(el,img){
+
+    document.querySelectorAll(".colors img").forEach(i=>{
+        i.classList.remove("active");
+    });
+
     el.classList.add("active");
 
-    let colorName  = el.getAttribute("data-color");
+    let colorName = el.getAttribute("data-color");
     let colorPrice = el.getAttribute("data-price");
 
-    document.getElementById("mainImage").src="uploads/"+img;
+    document.getElementById("mainImage").src = "uploads/" + img;
     document.getElementById("selectedColor").value = colorName;
     document.getElementById("selectedImage").value = img;
 
     if(colorPrice){
-    document.getElementById("priceDisplay").innerHTML="₹"+colorPrice;
-    document.getElementById("finalPrice").value = colorPrice;
+        document.getElementById("priceDisplay").innerHTML = "₹" + colorPrice;
+        document.getElementById("finalPrice").value = colorPrice;
     }
-    }
+}
 
-    function addToCart(){
+
+function addToCart(){
 
     if(!document.getElementById("size").value){
-    alert("Select Size");
-    return;
+        alert("Select Size");
+        return;
     }
 
     if(!document.getElementById("selectedColor").value){
-    alert("Select Color");
-    return;
+        alert("Select Color");
+        return;
     }
 
-    document.getElementById("productForm").action="add-to-cart.php";
+    let qty = parseInt(document.getElementById("qty").value) || 0;
+
+    if(qty < 1){
+        alert("Product is out of stock.");
+        return;
+    }
+
+    if(qty > selectedStock){
+        alert("Only " + selectedStock + " item available in stock.");
+
+        document.getElementById("qty").value = selectedStock;
+        document.getElementById("hiddenQty").value = selectedStock;
+
+        return;
+    }
+
+    document.getElementById("productForm").action = "add-to-cart.php";
     document.getElementById("productForm").submit();
-    }
+}
 
-    function buyNow(){
+
+function buyNow(){
 
     if(!document.getElementById("size").value){
-    alert("Select Size");
-    return;
+        alert("Select Size");
+        return;
     }
 
     if(!document.getElementById("selectedColor").value){
-    alert("Select Color");
-    return;
+        alert("Select Color");
+        return;
     }
 
-    document.getElementById("productForm").action="add-to-cart.php";
+    let qty = parseInt(document.getElementById("qty").value) || 0;
+
+    if(qty < 1){
+        alert("Product is out of stock.");
+        return;
+    }
+
+    if(qty > selectedStock){
+        alert("Only " + selectedStock + " item available in stock.");
+
+        document.getElementById("qty").value = selectedStock;
+        document.getElementById("hiddenQty").value = selectedStock;
+
+        return;
+    }
+
+    document.getElementById("productForm").action = "add-to-cart.php";
     document.getElementById("productForm").submit();
+}
+
+
+window.onload = function(){
+
+    let firstColor = document.querySelector(".colors img");
+
+    if(firstColor){
+        firstColor.click();
     }
 
+    let firstSize = document.querySelector(".size span");
 
-
-    /* AUTO SELECT FIRST COLOR + SIZE */
-    window.onload=function(){
-
-    let firstColor=document.querySelector(".colors img");
-    if(firstColor){ firstColor.click(); }
-
-    let firstSize=document.querySelector(".size span");
-    if(firstSize){ firstSize.click(); }
-
+    if(firstSize){
+        firstSize.click();
     }
 
-    </script>
+};
+
+</script>
     <?php include 'footer.php'; ?>
     </body>
     </html>

@@ -18,7 +18,7 @@ body{
     margin-top: 95px;
 }
 
-/* HEADER */
+
 
 .header{
     background:#fff;
@@ -28,7 +28,7 @@ body{
     border-bottom:1px solid #eee;
 }
 
-/* CONTAINER */
+
 
 .container{
     width:95%;
@@ -36,7 +36,7 @@ body{
     margin:20px auto;
 }
 
-/* CARD */
+
 
 .card{
     background:#fff;
@@ -127,7 +127,7 @@ body{
 
 <div class="container">
 
-<!-- STEP 1 -->
+
 
 <div class="card">
 
@@ -148,7 +148,7 @@ Select the product you want to return.
 
 </div>
 
-<!-- STEP 2 -->
+
 
 <div class="card">
 
@@ -169,7 +169,7 @@ for your return request.
 
 </div>
 
-<!-- STEP 3 -->
+
 
 <div class="card">
 
@@ -190,7 +190,6 @@ Our delivery partner will pick it up.
 
 </div>
 
-<!-- STEP 4 -->
 
 <div class="card">
 
@@ -211,7 +210,7 @@ processed within 5-7 business days.
 
 </div>
 
-<!-- NOTE -->
+
 
 <div class="note">
 ⚠ Return requests are accepted only within 7 days after delivery.

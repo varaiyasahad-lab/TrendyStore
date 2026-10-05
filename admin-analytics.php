@@ -8,21 +8,20 @@ if(!isset($_SESSION['admin_logged_in'])){
 
 include "db.php";
 
-/* TODAY SALES */
+
 $todaySales = mysqli_fetch_assoc(mysqli_query($conn,"
 SELECT IFNULL(SUM(total),0) total
 FROM orders
 WHERE DATE(created_at)=CURDATE()
 "));
 
-/* WEEK SALES */
+
 $weekSales = mysqli_fetch_assoc(mysqli_query($conn,"
 SELECT IFNULL(SUM(total),0) total
 FROM orders
 WHERE YEARWEEK(created_at)=YEARWEEK(NOW())
 "));
 
-/* MONTH SALES */
 $monthSales = mysqli_fetch_assoc(mysqli_query($conn,"
 SELECT IFNULL(SUM(total),0) total
 FROM orders
@@ -30,7 +29,7 @@ WHERE MONTH(created_at)=MONTH(NOW())
 AND YEAR(created_at)=YEAR(NOW())
 "));
 
-/* VISITORS */
+
 $visitors = mysqli_fetch_assoc(mysqli_query($conn,"
 SELECT COUNT(*) total
 FROM site_visits
@@ -55,7 +54,6 @@ WHERE MONTH(visit_date)=MONTH(NOW())
 AND YEAR(visit_date)=YEAR(NOW())
 "));
 
-/* SALES CHART */
 $chart = mysqli_query($conn,"
 SELECT
 DATE(created_at) day,
@@ -98,7 +96,7 @@ body{
     padding:30px;
 }
 
-/* Header */
+
 
 .page-header{
     display:flex;
@@ -113,7 +111,6 @@ body{
     color:#111827;
 }
 
-/* Cards */
 
 .card-box{
     border-radius:20px;
@@ -151,7 +148,7 @@ body{
     font-size:16px;
 }
 
-/* Gradient Colors */
+
 
 .blue{
     background:linear-gradient(135deg,#2563eb,#3b82f6);
@@ -177,7 +174,6 @@ body{
     background:linear-gradient(135deg,#0891b2,#22d3ee);
 }
 
-/* Chart */
 
 .chart-box{
     background:#fff;

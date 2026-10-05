@@ -2,25 +2,25 @@
 session_start();
 include "db.php";
 
-/* ================= LOGOUT ================= */
+
 if(isset($_GET['logout'])){
     session_destroy();
     header("Location: auth.php");
     exit;
 }
 
-/* ================= LOGIN CHECK ================= */
+
 if(!isset($_SESSION['user_id'])){
     header("Location: auth.php");
     exit;
 }
 
-/* ================= FETCH USER ================= */
+
 $user_id = $_SESSION['user_id'];
 $result = $conn->query("SELECT * FROM users WHERE id=$user_id");
 $user = $result->fetch_assoc();
 
-/* ================= INITIALS LOGIC ================= */
+
 $name = trim($user['first_name'] . " " . $user['last_name']);
 $words = explode(" ", $name);
 
@@ -30,7 +30,7 @@ if(count($words) > 1 && !empty($user['last_name'])){
     $initials = strtoupper(substr($name,0,1));
 }
 
-/* ================= UPDATE PROFILE ================= */
+
 $message = "";
 
 if(isset($_POST['update_profile'])){
@@ -53,7 +53,7 @@ if(isset($_POST['update_profile'])){
     }
 }
 
-/* ================= RANDOM COLOR ================= */
+
 $colors = ["#ff6b6b","#6bcB77","#4d96ff","#f06595","#ffa94d","#845ef7"];
 $bg = $colors[array_rand($colors)];
 ?>

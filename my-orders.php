@@ -2,7 +2,6 @@
 session_start();
 include "db.php";
 
-/* ================= LOGIN CHECK ================= */
 if(!isset($_SESSION['user_id'])){
     echo "Please login first";
     exit;
@@ -10,7 +9,6 @@ if(!isset($_SESSION['user_id'])){
 
 $user_id = $_SESSION['user_id'];
 
-/* ================= FETCH ORDERS ================= */
 $orders = $conn->query("
 SELECT 
     o.id,
@@ -216,7 +214,6 @@ h2{
 
 <div class="order-filters">
 
-    <!-- Last 6 Months -->
     <select name="month_filter" class="filter-select">
         <option>Last 6 Months</option>
         <option>2026</option>
@@ -246,7 +243,6 @@ $refund_status = strtolower(trim($row['refund_status'] ?? ''));
 $color = "#0d6efd";
 $text  = "Order Confirmed";
 
-/* ================= STATUS ================= */
 
 if($status == "processing"){
     $color = "#fd7e14";
@@ -277,8 +273,6 @@ if($status == "cancelled"){
     $color = "#dc3545";
     $text  = "Cancelled";
 }
-
-/* ================= RETURN REFUND ================= */
 
 if(
     $return_status != "" ||

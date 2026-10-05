@@ -1,12 +1,10 @@
-/* ======================
-   MY CART PAGE DESIGN
-====================== */
+
 
 body{
   background:#f6f7f9;
 }
 
-/* Title */
+
 .cart-title{
   font-weight:800;
   text-align:center;
@@ -14,7 +12,7 @@ body{
   margin-bottom:30px;
 }
 
-/* Table */
+
 .cart-table{
   background:#fff;
   border-radius:14px;
@@ -36,19 +34,19 @@ body{
   padding:18px 12px;
   font-size:15px;
 }
-/* Row borders */
+
 .cart-table th,
 .cart-table td{
   border:1px solid royalblue !important;
 }
 
-/* Product image */
+
 .cart-table img{
   border-radius:10px;
   margin-bottom:6px;
 }
 
-/* Qty buttons */
+
 .qty-btn{
   width:34px;
   height:34px;
@@ -58,31 +56,30 @@ body{
   padding:0;
 }
 
-/* Remove button */
+
 .remove-btn{
   border-radius:20px;
   padding:6px 14px;
 }
 
-/* Grand total row */
+
 .cart-table tr:last-child th{
   background:#f1f1f1;
   font-size:18px;
 }
-/* Grand total bottom border */
+
 .cart-table tr:last-child th{
   border-bottom:2px solid #111 !important;
 }
 
 
-/* Bottom actions */
+
 .cart-actions{
   display:flex;
   justify-content:space-between;
   margin-top:35px;
 }
 
-/* Empty cart */
 .empty-cart{
   background:#fff;
   padding:60px;
@@ -95,7 +92,7 @@ body{
   margin-bottom:20px;
 }
 
-/* Mobile responsive */
+
 @media(max-width:768px){
   .cart-table th,
   .cart-table td{
@@ -112,10 +109,10 @@ body{
     font-size:22px;
   }
 }
-/* ===== GRAND TOTAL HIGHLIGHT ===== */
+
 
 .cart-table tr:last-child th{
-  background:gold !important;   /* dark background */
+  background:gold !important;  
   color:black !important;
   font-size:20px;
   font-weight:800;
@@ -129,7 +126,7 @@ body{
 .cart-table tr:last-child th:last-child{
   text-align:center;
 }
-/* CHECKOUT STEPS */
+
 .checkout-steps{
   display:flex;
   align-items:center;

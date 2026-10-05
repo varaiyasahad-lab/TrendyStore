@@ -2,7 +2,7 @@
   session_start();
   include "db.php";
 
-  /* BEST SELLER PRODUCTS */
+  
 
   $sql = "SELECT * FROM products WHERE best_seller=1";
 
@@ -33,7 +33,7 @@ if(isset($_GET['max_price']) && $_GET['max_price']!=""){
     $sql .= " AND price <= $max";
 }
 
-/* SORT LAST MAI LAGAO */
+
 
 if(isset($_GET['sort'])){
 
@@ -214,9 +214,7 @@ $totalProducts = mysqli_num_rows($result);
     padding-top: 95px;
   }
 
-  /* =========================
-  TOP HEADER
-  ========================= */
+ 
 
   .top{
     width:100%;
@@ -230,17 +228,13 @@ $totalProducts = mysqli_num_rows($result);
     box-shadow:0 4px 15px rgba(0,0,0,0.2);
   }
 
-  /* =========================
-  SECTION
-  ========================= */
+
 
   .best-section{
     padding:25px;
   }
 
-  /* =========================
-  GRID
-  ========================= */
+
 
   .best-grid{
     display:grid;
@@ -250,17 +244,12 @@ $totalProducts = mysqli_num_rows($result);
     gap:22px;
   }
 
-  /* =========================
-  LINK
-  ========================= */
 
   .best-link{
     text-decoration:none;
   }
 
-  /* =========================
-  CARD
-  ========================= */
+
 
   .best-card{
     background:#fff;
@@ -280,9 +269,7 @@ $totalProducts = mysqli_num_rows($result);
     0 18px 35px rgba(0,0,0,0.16);
   }
 
-  /* =========================
-  IMAGE
-  ========================= */
+
 
   .best-card img{
     width:100%;
@@ -297,9 +284,6 @@ $totalProducts = mysqli_num_rows($result);
     transform:scale(1.06);
   }
 
-  /* =========================
-  BADGE
-  ========================= */
 
   .best-card::before{
     content:'HOT';
@@ -325,9 +309,6 @@ $totalProducts = mysqli_num_rows($result);
     0 5px 15px rgba(255,0,0,0.3);
   }
 
-  /* =========================
-  TITLE
-  ========================= */
 
   .best-card h3{
     font-size:18px;
@@ -338,9 +319,7 @@ $totalProducts = mysqli_num_rows($result);
     padding:0 10px;
   }
 
-  /* =========================
-  PRICE
-  ========================= */
+
 
   .price{
     text-align:center;
@@ -357,9 +336,7 @@ $totalProducts = mysqli_num_rows($result);
     margin-bottom:14px;
   }
 
-  /* =========================
-  BUTTON
-  ========================= */
+  
 
   .btn{
     width:82%;
@@ -388,9 +365,6 @@ $totalProducts = mysqli_num_rows($result);
     linear-gradient(90deg,#ff0000,#ff7300);
   }
 
-  /* =========================
-  MOBILE
-  ========================= */
 
   @media(max-width:768px){
 
@@ -618,7 +592,7 @@ display:inline-block;
 
   <?php include 'header.php'; ?>
 
-  <!-- SECTION -->
+  
 
 
   

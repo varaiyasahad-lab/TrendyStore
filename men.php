@@ -17,7 +17,6 @@ body{
   padding-top:80px;
 }
 
-/* ===== TOP TEXT ===== */
 
 .top-text{
   text-align:center;
@@ -35,7 +34,6 @@ body{
   font-weight:700;
 }
 
-/* ===== SLIDER ===== */
 
 .men-slider{
   width:100%;
@@ -65,7 +63,6 @@ body{
   background:#fff;
 }
 
-/* ===== ARROWS ===== */
 
 .men-prev,
 .men-next{
@@ -93,7 +90,6 @@ body{
   right:20px;
 }
 
-/* ===== DOTS ===== */
 
 .men-dots{
   text-align:center;
@@ -115,7 +111,6 @@ body{
   background:#0a7d5f;
 }
 
-/* ===== CATEGORIES ===== */
 
 .men-categories{
   max-width:1800px;
@@ -164,7 +159,6 @@ body{
   letter-spacing:1px;
 }
 
-/* ===== PRODUCTS ===== */
 
 .container{
   padding:50px 20px;
@@ -214,8 +208,6 @@ body{
   margin-bottom:20px;
 }
 
-/* ===== TRENDING BUTTONS ===== */
-
 .trending-buttons{
   display:flex;
   flex-wrap:wrap;
@@ -240,8 +232,6 @@ body{
 }
 
 
-
-/* ===== MOBILE ===== */
 
 @media(max-width:768px){
 
@@ -332,14 +322,12 @@ body{
 
 <?php include 'header.php'; ?>
 
-<!-- ===== TOP TEXT ===== -->
 
 <div class="top-text">
   <p>Men products coming soon…</p>
   <a href="index.php">⬅ Back to Home</a>
 </div>
 
-<!-- ===== SLIDER ===== -->
 
 <div class="men-slider">
 
@@ -364,7 +352,6 @@ body{
 
 </div>
 
-<!-- ===== DOTS ===== -->
 
 <div class="men-dots">
   <span class="dot active"></span>
@@ -373,7 +360,6 @@ body{
   <span class="dot"></span>
 </div>
 
-<!-- ===== CATEGORIES ===== -->
 
 <div class="men-categories">
 
@@ -425,7 +411,6 @@ body{
 
 </div>
 
-<!-- ===== PRODUCTS ===== -->
 <div class="container">
 
   <h1 class="section-title"><b><u>Popular Products</u></b></h1>
@@ -461,7 +446,6 @@ body{
 </div>
 
 
-<!-- ===== FOOTER ===== -->
 
 
 

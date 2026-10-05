@@ -28,7 +28,6 @@ body{
     margin-top: 95px;
 }
 
-/* HEADER */
 
 .header{
     background:#fff;
@@ -38,7 +37,6 @@ body{
     border-bottom:1px solid #eee;
 }
 
-/* CONTAINER */
 
 .container{
     width:95%;
@@ -46,7 +44,7 @@ body{
     margin:20px auto;
 }
 
-/* CARD */
+
 
 .card{
     background:#fff;
@@ -67,7 +65,7 @@ body{
     font-size:15px;
 }
 
-/* PAYMENT METHODS */
+
 
 .methods{
     display:flex;
@@ -83,7 +81,6 @@ body{
     font-size:14px;
 }
 
-/* NOTE */
 
 .note{
     background:#fff3cd;
@@ -132,7 +129,7 @@ body{
 
 <div class="container">
 
-<!-- SECTION 1 -->
+
 
 <div class="card">
 
@@ -158,7 +155,6 @@ We support multiple secure payment methods for easy shopping.
 
 </div>
 
-<!-- SECTION 2 -->
 
 <div class="card">
 
@@ -171,7 +167,7 @@ and order value. Free delivery may apply on selected products.
 
 </div>
 
-<!-- SECTION 3 -->
+
 
 <div class="card">
 
@@ -184,8 +180,6 @@ through trusted payment gateways.
 
 </div>
 
-<!-- SECTION 4 -->
-
 <div class="card">
 
 <h2>4. Failed Transactions</h2>
@@ -197,7 +191,7 @@ will automatically be refunded within 5-7 business days.
 
 </div>
 
-<!-- SECTION 5 -->
+
 
 <div class="card">
 
@@ -210,7 +204,7 @@ or high-value orders.
 
 </div>
 
-<!-- NOTE -->
+
 
 <div class="note">
 ⚠ Additional bank charges may apply depending on your payment method.

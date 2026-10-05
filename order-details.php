@@ -18,9 +18,7 @@ if(!$order){
     die("Order Not Found");
 }
 
-/* ================= ACTION ================= */
 
-// CANCEL
 if(isset($_POST['cancel_order'])){
 
     $reason  = $_POST['reason'] ?? '';
@@ -38,7 +36,6 @@ if(isset($_POST['cancel_order'])){
     exit;
 }
 
-// RETURN
 if(isset($_POST['return_order'])){
 
     $reason = $_POST['return_reason'] ?? '';
@@ -55,7 +52,6 @@ if(isset($_POST['return_order'])){
     exit;
 }
 
-/* ================= NORMALIZE ================= */
 
 $status = strtolower(trim($order['order_status'] ?? ''));
 
@@ -65,7 +61,6 @@ $refund = strtolower(trim($order['refund_status'] ?? ''));
 if($return == "none") $return = "";
 if($refund == "none") $refund = "";
 
-/* ================= PRODUCTS ================= */
 
 $order_id = $order['id'];
 
@@ -123,7 +118,6 @@ body{
     border-radius:12px;
 }
 
-/* ================= PRODUCT ================= */
 
 .product-box{
     display:flex;
@@ -141,7 +135,6 @@ body{
     border-radius:12px;
 }
 
-/* ================= TIMELINE ================= */
 
 .timeline{
     position:relative;
@@ -202,7 +195,6 @@ body{
     background:#c89b3c;
 }
 
-/* ================= BUTTON ================= */
 
 .btn{
     width:100%;
@@ -231,7 +223,6 @@ input,select{
     box-sizing:border-box;
 }
 
-/* MOBILE */
 
 @media(max-width:600px){
 
@@ -268,7 +259,6 @@ font-size:15px;
 </a>
 </div>
 
-<!-- ================= PRODUCTS ================= -->
 
 <div class="card">
 
@@ -337,7 +327,6 @@ View Product →
 
 </div>
 
-<!-- ================= CANCELLED ================= -->
 
 <?php if($status=="cancelled"){ ?>
 
@@ -365,7 +354,6 @@ Cancelled<br>
 
 <?php } ?>
 
-<!-- ================= NORMAL ORDER ================= -->
 
 <?php if(($return=="" || $view=="original") && $status!="cancelled"){ ?>
 
@@ -447,7 +435,6 @@ Cancel Order
 
 <?php } ?>
 
-<!-- RETURN -->
 
 <?php if($status=="delivered" && $return==""){ ?>
 
@@ -475,7 +462,6 @@ Return & Refund
 
 <?php } ?>
 
-<!-- ================= RETURN FLOW ================= -->
 
 <?php if($return!="" && $view!="original"){ ?>
 
@@ -561,7 +547,6 @@ View Original Order
 
 <?php } ?>
 
-<!-- ================= ADDRESS ================= -->
 
 <div class="card">
 
@@ -575,7 +560,6 @@ Phone: <?= $order['mobile'] ?>
 
 </div>
 
-<!-- ================= PAYMENT ================= -->
 
 <div class="card">
 

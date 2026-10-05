@@ -40,14 +40,14 @@ $current = basename($_SERVER['PHP_SELF']);
   color:#e10600;
 }
 
-/* Desktop me hide */
+
 @media(min-width:769px){
   .mobile-nav{
     display:none;
   }
 }
 
-/* Content hide na ho */
+
 body{
   padding-bottom:70px;
 }

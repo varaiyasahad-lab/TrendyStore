@@ -34,7 +34,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
   exit;
 }
 
-/* VALIDATION */
+
 if(empty($_SESSION['buy_now']) && empty($_SESSION['cart'])){
   echo "<h2 style='padding:20px'>❌ Please select product first</h2>";
   exit;
@@ -57,7 +57,7 @@ body{
   font-family: 'Segoe UI', sans-serif;
 }
 
-/* STEPS */
+
 .checkout-steps{
   display:flex;
   align-items:center;
@@ -110,7 +110,6 @@ body{
   border-radius:5px;
 }
 
-/* BOX */
 .payment-box{
   background:#fff;
   padding:30px;
@@ -124,7 +123,7 @@ body{
   color:#666;
 }
 
-/* MOBILE */
+
 @media(max-width:576px){
   .step{ font-size:11px; }
   .step .circle{ width:32px;height:32px;font-size:13px; }
@@ -138,7 +137,7 @@ body{
 
 <div class="container my-5">
 
-  <!-- STEPS -->
+
   <div class="checkout-steps">
 
     <div class="step done">
@@ -162,7 +161,7 @@ body{
 
   </div>
 
-  <!-- BOX -->
+
   <div class="payment-box">
 
     <h3 class="text-center mb-3">🚚 Delivery Details</h3>
@@ -171,7 +170,7 @@ body{
       Enter your shipping address to continue
     </p>
 
-    <!-- ADDRESS FORM -->
+ 
     <form method="post">
 
       <input type="text" name="name" class="form-control mb-2"
@@ -185,7 +184,7 @@ body{
       <textarea name="address" class="form-control mb-2"
                 placeholder="Full Address" required><?= $_SESSION['address']['address'] ?? '' ?></textarea>
 
-      <!-- 🔥 NEW FIELDS -->
+   
       <input type="text" name="city" class="form-control mb-2"
              placeholder="City"
              value="<?= $_SESSION['address']['city'] ?? '' ?>" required>
@@ -202,7 +201,7 @@ body{
 
   </div>
 
-  <!-- TRUST -->
+  
   <div class="happy-box">
     <h2>😊 1,25,000+</h2>
     <p>Happy Customers Trust Trendy Store</p>

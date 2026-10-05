@@ -2,9 +2,7 @@
 session_start();
 include "db.php";
 
-/* =========================
-   GET FILTER VALUES
-========================= */
+
 
 $gender   = $_GET['gender'] ?? 'men';
 $cat      = $_GET['cat'] ?? 'all';
@@ -16,15 +14,12 @@ $brand    = $_GET['brand'] ?? '';
 $occasion = $_GET['occasion'] ?? '';
 $sort     = $_GET['sort'] ?? '';
 
-/* =========================
-   MAIN QUERY
-========================= */
+
 
 $sql = "SELECT * FROM products WHERE gender='$gender'";
 
 
 
-/* CATEGORY */
 
 if($cat != '' && $cat != 'all'){
 
@@ -39,7 +34,7 @@ AND category IN ($catValues)
 ";
 
 }
-/* PRICE RANGE */
+
 
 if($price != ''){
 
@@ -57,9 +52,7 @@ AND
 
 }
 
-/* COLOR */
 
-/* COLOR */
 
 if($color != ''){
 
@@ -82,7 +75,7 @@ IN ($colorValues)
 ";
 
 }
-/* SIZE */
+
 
 if($size != ''){
 
@@ -106,7 +99,7 @@ WHERE size IN ($sizeValues)
 }
 
 
-/* DISCOUNT */
+
 
 if($discount != ''){
 
@@ -123,7 +116,7 @@ AND discount IN ($discountValues)
 }
 
 
-/* BRAND */
+
 
 if($brand != ''){
 
@@ -141,7 +134,7 @@ AND brand IN ($brandValues)
 
 
 
-/* OCCASION */
+
 
 if($occasion != ''){
 
@@ -159,9 +152,6 @@ AND occasion IN ($occasionValues)
 
 
 
-
-/* SORT */
-
 if($sort == 'low'){
 $sql .= " ORDER BY price ASC";
 }
@@ -175,7 +165,7 @@ else{
 $sql .= " ORDER BY id DESC";
 }
 
-/* RESULT */
+
 
 $result = mysqli_query($conn,$sql);
 
@@ -208,9 +198,7 @@ Collection
 
 <style>
 
-/* =========================
-   BODY
-========================= */
+
 
 *{
 margin:0;
@@ -227,9 +215,7 @@ padding-bottom:140px;
 padding-top:95px;
 }
 
-/* =========================
-   HEADER
-========================= */
+
 
 .header{
 width:100%;
@@ -241,9 +227,6 @@ font-size:34px;
 font-weight:700;
 }
 
-/* =========================
-   TOTAL PRODUCTS
-========================= */
 
 .total-products{
 padding:18px;
@@ -253,9 +236,7 @@ background:#fff;
 margin-bottom:10px;
 }
 
-/* =========================
-   PRODUCTS GRID
-========================= */
+
 
 .products{
 display:grid;
@@ -264,9 +245,7 @@ gap:20px;
 padding:20px;
 }
 
-/* =========================
-   PRODUCT CARD
-========================= */
+
 
 .product{
 background:#fff;
@@ -283,7 +262,7 @@ object-fit:contain;
 display:block;
 }
 
-/* DISCOUNT */
+
 
 .discount-tag{
 position:absolute;
@@ -322,7 +301,7 @@ transition:.3s;
 transform:scale(1.1);
 }
 
-/* DATA */
+
 
 .product-data{
 padding:14px;
@@ -355,7 +334,7 @@ text-decoration:line-through;
 margin-left:8px;
 }
 
-/* BUTTON */
+
 
 .btn{
 margin-top:14px;
@@ -379,9 +358,7 @@ color:#000;
 display:block;
 }
 
-/* =========================
-   BOTTOM BAR
-========================= */
+
 
 .bottom-bar{
 position:fixed;
@@ -406,9 +383,6 @@ font-weight:700;
 cursor:pointer;
 }
 
-/* =========================
-   FILTER POPUP
-========================= */
 
 .popup{
 position:fixed;
@@ -459,7 +433,7 @@ background:#fff;
 font-weight:bold;
 }
 
-/* RIGHT */
+
 
 .right-data{
 width:65%;
@@ -475,7 +449,6 @@ display:none;
 display:block;
 }
 
-/* CHECK */
 
 .check-box{
 display:flex;
@@ -491,7 +464,7 @@ width:24px;
 height:24px;
 }
 
-/* COLOR */
+
 
 .color-circle{
 width:28px;
@@ -500,7 +473,7 @@ border-radius:50%;
 border:1px solid #ccc;
 }
 
-/* FOOTER */
+
 
 .popup-footer{
 display:flex;
@@ -530,9 +503,7 @@ font-size:20px;
 cursor:pointer;
 }
 
-/* =========================
-   SORT POPUP
-========================= */
+
 
 .sort-popup{
 position:fixed;
@@ -583,9 +554,6 @@ margin-top:20px;
 cursor:pointer;
 }
 
-/* =========================
-   MOBILE
-========================= */
 
 @media(max-width:576px){
 
@@ -704,11 +672,10 @@ height:6px;
 
 <body>
 <?php include 'header.php'; ?>
-<!-- HEADER -->
 
 
 
-<!-- TOTAL -->
+
 
 <div class="total-products">
 
@@ -718,7 +685,6 @@ Products
 
 </div>
 
-<!-- PRODUCTS -->
 
 <div class="products">
 
@@ -836,7 +802,7 @@ View Product
 
 </div>
 
-<!-- BOTTOM -->
+
 
 <div class="bottom-bar">
 
@@ -856,7 +822,7 @@ onclick="openSort()">
 
 </div>
 
-<!-- FILTER POPUP -->
+
 
 <div class="popup"
 id="filterPopup">
@@ -875,7 +841,7 @@ Filters
 
 <div class="popup-body">
 
-<!-- LEFT -->
+
 
 <div class="left-menu">
 
@@ -891,11 +857,10 @@ Filters
 
 </div>
 
-<!-- RIGHT -->
+
 
 <div class="right-data">
 
-<!-- GENDER -->
 
 <div class="filter-box active">
 
@@ -935,7 +900,7 @@ WHERE gender='women'
 
 </div>
 
-<!-- CATEGORY -->
+
 
 <div class="filter-box">
 
@@ -1035,7 +1000,7 @@ value="<?= $womenCat ?>"
 ?>
 
 </div>
-<!-- PRICE -->
+
 
 <div class="filter-box">
 
@@ -1083,7 +1048,7 @@ step="100">
 
 </div>
 
-<!-- COLORS -->
+
 
 <div class="filter-box">
 
@@ -1130,7 +1095,7 @@ background:
 </div>
     
     
-    <!-- SIZE -->
+ 
 
 <div class="filter-box">
 
@@ -1169,7 +1134,7 @@ value="<?= $row['size'] ?>"
 
 </div>
 
-<!-- DISCOUNT -->
+
 
 <div class="filter-box">
 
@@ -1215,7 +1180,7 @@ value="50"
 </div>
 
 
-    <!-- BRAND -->
+   
 
 <div class="filter-box">
 
@@ -1252,7 +1217,7 @@ value="<?= $row['brand'] ?>"
 
 </div>
     
-    <!-- OCCASION -->
+   
 
 <div class="filter-box">
 
@@ -1318,7 +1283,7 @@ Apply Filter
 
 </div>
 
-<!-- SORT -->
+
 
 <div class="sort-popup"
 id="sortPopup">
@@ -1386,7 +1351,7 @@ Apply
 
 <script>
 
-/* FILTER */
+
 
 function openFilter(){
 
@@ -1404,7 +1369,7 @@ document
 
 }
 
-/* SORT */
+
 
 function openSort(){
 
@@ -1422,7 +1387,7 @@ document
 
 }
 
-/* LEFT MENU */
+
 
 const menu =
 document.querySelectorAll(
@@ -1459,7 +1424,7 @@ boxes[index]
 
 });
 
-/* APPLY FILTER */
+
 
 function applyFilters(){
 
@@ -1511,7 +1476,7 @@ document.querySelectorAll(
     
 let url = "category.php?";
 
-/* GENDER */
+
 
 if(gender){
 
@@ -1525,7 +1490,7 @@ url +=
 
 }
 
-/* CATEGORY */
+
 
 let catArray = [];
 
@@ -1548,16 +1513,13 @@ url +=
 }
 
 
-
-/* PRICE */
-
 url +=
 "&price="+
 minPrice.value+
 "-"+
 maxPrice.value;
 
-/* COLOR */
+
 
 let colorArray = [];
 
@@ -1574,7 +1536,7 @@ url +=
 
 }
 
-/* SIZE */
+
 
 let sizeArray = [];
 
@@ -1591,7 +1553,7 @@ url +=
 
 }
 
-/* DISCOUNT */
+
 
 let discountArray = [];
 
@@ -1608,7 +1570,7 @@ url +=
 
 }
    
-/* BRAND */
+
 
 let brandArray = [];
 
@@ -1625,7 +1587,7 @@ url +=
 
 }
 
-/* OCCASION */
+
 
 let occasionArray = [];
 
@@ -1646,7 +1608,7 @@ window.location = url;
 }
 
     
-/* APPLY SORT */
+
 
 function applySort(){
 

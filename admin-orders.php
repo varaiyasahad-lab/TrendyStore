@@ -11,9 +11,7 @@ include "db.php";
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-/* =========================
-   ORDER STATUS UPDATE
-========================= */
+
 if(isset($_POST['update_status'])){
 
     $order_code = $conn->real_escape_string($_POST['order_code']);
@@ -42,9 +40,7 @@ if(isset($_POST['update_status'])){
 exit;
 }
 
-/* =========================
-   RETURN UPDATE (FIXED)
-========================= */
+
 if(isset($_POST['update_return'])){
 
     $order_code   = $conn->real_escape_string($_POST['order_code']);
@@ -74,9 +70,8 @@ if(isset($_POST['update_return'])){
     header("Location: admin-orders.php");
 exit;
 }
-/* =========================
-   REFUND UPDATE (FIXED)
-========================= */
+
+
 if(isset($_POST['update_refund'])){
 
     $order_code = $_POST['order_code'];
@@ -101,7 +96,8 @@ if(isset($_POST['update_refund'])){
         echo $conn->error;
     }
 }
-/* SEARCH */
+
+
 
 $search = $_GET['search'] ?? '';
 
@@ -115,10 +111,7 @@ if(!empty($search)){
     OR name LIKE '%$search%'
     ";
 }
-/* =========================
-   FETCH ORDERS
-========================= */
-/* PAGINATION */
+
 
 $limit = 10;
 
@@ -130,7 +123,8 @@ if($page < 1){
 
 $start = ($page - 1) * $limit;
 
-/* TOTAL ORDERS */
+
+
 $totalRes = $conn->query("
 SELECT COUNT(*) total
 FROM orders
@@ -143,7 +137,6 @@ $totalOrders = $totalRow['total'];
 
 $totalPages = ceil($totalOrders / $limit);
 
-/* FETCH ORDERS */
 
 $orders = $conn->query("
 SELECT *
@@ -302,7 +295,6 @@ View
 </td>
 
 
-<!-- ORDER -->
 
 <td>
 <form method="POST">
@@ -322,7 +314,7 @@ Update Order
 </form>
 </td>
 
-<!-- RETURN -->
+
 
 <td>
 <form method="POST">
@@ -340,7 +332,7 @@ Update Return
 </form>
 </td>
 
-<!-- REFUND -->
+
 
 <td>
 <form method="POST">

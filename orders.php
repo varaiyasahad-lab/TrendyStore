@@ -2,7 +2,7 @@
 session_start();
 include "db.php";
 
-$mobile = $_SESSION['mobile']; // login se aayega
+$mobile = $_SESSION['mobile'];
 
 $q = $conn->query("SELECT * FROM orders WHERE mobile='$mobile' ORDER BY id DESC");
 ?>

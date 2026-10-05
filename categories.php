@@ -5,13 +5,13 @@ session_start();
 <?php
 include "db.php";
 
-/* MEN */
+
 $menCats = $conn->query("SELECT DISTINCT category FROM products WHERE gender='men'");
 
-/* WOMEN */
+
 $womenCats = $conn->query("SELECT DISTINCT category FROM products WHERE gender='women'");
 
-/* IMAGE MAP */
+
 $imgMap = [
   "men_tshirts" => "tshirts (7).png",
   "men_shirts" => "shirts3.png",
@@ -54,7 +54,7 @@ body{
   padding-top: 95px;
 }
 
-/* SECTION */
+
 .section{
   padding:18px;
 }
@@ -66,14 +66,14 @@ body{
   color:#222;
 }
 
-/* GRID */
+
 .cat-row{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:14px;
 }
 
-/* CARD */
+
 .cat-box{
   background:#fff;
   border-radius:18px;
@@ -85,13 +85,13 @@ body{
   box-shadow:0 2px 8px rgba(0,0,0,0.05);
 }
 
-/* HOVER */
+
 .cat-box:hover{
   transform:translateY(-4px);
   box-shadow:0 6px 18px rgba(0,0,0,0.12);
 }
 
-/* IMAGE */
+
 .cat-box img{
   width:100%;
   height:170px;
@@ -99,7 +99,7 @@ body{
   display:block;
 }
 
-/* TEXT */
+
 .cat-box span{
   display:block;
   padding:10px;
@@ -108,12 +108,12 @@ body{
   color:#333;
 }
 
-/* 🔥 subtle divider between sections */
+
 .section + .section{
   margin-top:10px;
 }
 
-/* DESKTOP */
+
 @media(min-width:768px){
   .cat-row{
     grid-template-columns:repeat(7,1fr);
@@ -124,7 +124,7 @@ body{
 
 <body>
   <?php include 'header.php'; ?>
-<!-- MEN -->
+
 <div class="section">
   <h2>👔 Men</h2>
 
@@ -141,7 +141,7 @@ body{
   </div>
 </div>
 
-<!-- WOMEN -->
+
 <div class="section">
   <h2>👗 Women</h2>
 

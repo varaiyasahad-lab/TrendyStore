@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-/* 🔐 CART SAFETY */
+
 if (empty($_SESSION['cart'])) {
   header("Location: view-cart.php");
   exit;
@@ -9,9 +9,7 @@ if (empty($_SESSION['cart'])) {
 
 $error = "";
 
-/* ======================
-   ADDRESS FORM SUBMIT
-====================== */
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (
@@ -48,13 +46,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
-/* ===== GLOBAL ===== */
+
 body{
   background:#f8f9fa;
   font-family: 'Segoe UI', Tahoma, sans-serif;
 }
 
-/* ===== STEPS ===== */
+
 .checkout-steps{
   display:flex;
   justify-content:center;
@@ -108,7 +106,7 @@ body{
   background:#198754;
 }
 
-/* ===== CARD ===== */
+
 .checkout-card{
   background:#fff;
   max-width:480px;
@@ -118,7 +116,7 @@ body{
   box-shadow:0 12px 35px rgba(0,0,0,0.08);
 }
 
-/* ===== FORM ===== */
+
 .checkout-card input,
 .checkout-card textarea{
   border-radius:10px;
@@ -132,14 +130,14 @@ body{
   box-shadow:0 0 0 0.15rem rgba(25,135,84,.25);
 }
 
-/* ===== BUTTONS ===== */
+
 .checkout-card .btn{
   border-radius:10px;
   padding:10px 18px;
   font-weight:500;
 }
 
-/* ===== MOBILE ===== */
+
 @media(max-width:576px){
   .checkout-card{
     padding:22px;
@@ -156,7 +154,7 @@ body{
 
 <div class="container my-5">
 
-  <!-- STEPS -->
+
   <div class="checkout-steps">
     <div class="step done">
       <div class="circle">✓</div>
@@ -178,7 +176,7 @@ body{
     </div>
   </div>
 
-  <!-- ADDRESS BOX -->
+
   <div class="checkout-card mt-5">
 
     <h3 class="text-center mb-4">📍 Shipping Address</h3>

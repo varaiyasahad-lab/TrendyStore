@@ -8,7 +8,7 @@ if(!isset($_SESSION['admin_logged_in'])){
 
 include "db.php";
 
-/* DELETE USER */
+
 if(isset($_GET['delete'])){
     $id = (int)$_GET['delete'];
 
@@ -21,7 +21,7 @@ if(isset($_GET['delete'])){
     exit;
 }
 
-/* SEARCH */
+
 $search = $_GET['search'] ?? '';
 
 $where = "";
@@ -36,7 +36,7 @@ if(!empty($search)){
     ";
 }
 
-/* PAGINATION */
+
 $limit = 10;
 
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
@@ -47,7 +47,7 @@ if($page < 1){
 
 $start = ($page - 1) * $limit;
 
-/* TOTAL USERS */
+
 $totalRes = mysqli_query($conn,"
 SELECT COUNT(*) total
 FROM users
@@ -60,7 +60,7 @@ $totalUsers = $totalRow['total'];
 
 $totalPages = ceil($totalUsers / $limit);
 
-/* FETCH USERS */
+
 $users = mysqli_query($conn,"
 SELECT *
 FROM users
@@ -104,7 +104,7 @@ body{
 
 <hr>
 
-<!-- SEARCH -->
+
 <form method="GET" class="mb-4">
 <div class="input-group">
 <input type="text"
@@ -159,7 +159,7 @@ Delete
 
 </table>
 
-<!-- PAGINATION -->
+
 <nav>
 <ul class="pagination justify-content-center">
 

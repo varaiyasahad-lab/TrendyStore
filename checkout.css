@@ -1,4 +1,4 @@
-/* ===== CHECKOUT STEPS (ORDER → ADDRESS → PAYMENT) ===== */
+
 
 .checkout-steps{
   display:flex;
@@ -7,7 +7,7 @@
   margin:40px 0 60px;
 }
 
-/* Each step */
+
 .step{
   text-align:center;
   font-weight:700;
@@ -15,9 +15,9 @@
   min-width:120px;
 }
 
-/* Circle */
+
 .circle{
-  width:54px;          /* 👈 thoda mota */
+  width:54px;       
   height:54px;
   border-radius:50%;
   background:#ddd;
@@ -30,16 +30,16 @@
   border:3px solid #ccc;
 }
 
-/* Line between steps */
+
 .line{
   width:100px;
-  height:6px;          /* 👈 height badhayi */
+  height:6px;        
   background:#ccc;
   margin:0 12px;
   border-radius:10px;
 }
 
-/* COMPLETED STEP */
+
 .step.done .circle{
   background:#28a745;
   color:#fff;
@@ -50,14 +50,13 @@
   background:#28a745;
 }
 
-/* ACTIVE STEP */
 .step.active .circle{
   background:#fff;
   color:#28a745;
   border-color:#28a745;
 }
 
-/* Text color */
+
 .step.done,
 .step.active{
   color:#28a745;
@@ -67,7 +66,7 @@ body{
   font-family:Arial, Helvetica, sans-serif;
 }
 
-/* ===== STEPS ===== */
+
 .checkout-steps{
   display:flex;
   align-items:center;
@@ -121,7 +120,7 @@ body{
   background:#28a745;
 }
 
-/* ===== ADDRESS BOX ===== */
+
 .address-box{
   max-width:500px;
   margin:auto;

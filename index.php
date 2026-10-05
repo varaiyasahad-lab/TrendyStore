@@ -1,12 +1,11 @@
 <?php
 session_start();
-/* DB CONNECT */
+
 include "db.php";
 
-/* VISITOR TRACKER */
+
 include "visitor-tracker.php";
 
-/* CART COUNT */
 $cartCount = 0;
 if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
   foreach ($_SESSION['cart'] as $c) {
@@ -17,17 +16,12 @@ if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
 }
 
 
-/* CATEGORY FETCH */
+
 $menCats = $conn->query("SELECT DISTINCT category FROM products WHERE gender='men' ORDER BY FIELD(category,'tshirts','shirts','jeans','trackpants','nightwear','hoodies','pants')");
 
 $womenCats = $conn->query("SELECT DISTINCT category FROM products WHERE gender='women' ORDER BY FIELD(category,'tshirts','shirts','dresses','jeans','trackpants','nightwear','hoodies')");
 
-/* IMAGE MAP */
 $imgMap = [
-
- 
-
-  // MEN
   "men_tshirts" => "tshirts (7).png",
   "men_shirts" => "shirts3.png",
   "men_jeans" => "jeans (4).png",
@@ -37,7 +31,7 @@ $imgMap = [
   "men_pants" => "men pants.png",
    "men_polos" => "polos.png",
 
-  // WOMEN
+
   "women_tshirts" => "women tshirts.png",
   "women_shirts" => "women shirts.png",
   "women_jeans" => "women jeans.png",
@@ -66,13 +60,13 @@ body{
   margin:0;
   padding:0;
   overflow-x:hidden; 
-    /* 🔥 side white space हटेगा */
+    
 }
     *{
   box-sizing:border-box;
   max-width:100%;
 }
-/* NAVBAR */
+
 .navbar{
   display:flex;
   align-items:center;
@@ -114,7 +108,7 @@ body{
   overflow-x:hidden;
 }
 
-/* NAVBAR */
+
 .navbar{
   padding:8px 12px;
   width:100%;
@@ -128,7 +122,7 @@ body{
   background:#fff;
 }
 
-/* LOGO */
+
 .nav-logo{
   height:48px;
 }
@@ -138,7 +132,7 @@ body{
   font-weight:800;
 }
 
-/* MENU */
+
 .nav-menu{
   width:100%;
   justify-content:space-around;
@@ -151,7 +145,7 @@ body{
   font-size:14px;
 }
 
-/* SEARCH */
+
 .search-box{
   width:100% !important;
   margin-top:0 !important;
@@ -162,14 +156,14 @@ body{
   font-size:14px;
 }
 
-/* LOGIN CART */
+
 .nav-icons{
   width:100%;
   justify-content:space-between;
   margin-top:0;
 }
 
-/* SLIDER */
+
 .hero-slider{
   height:250px !important;
   margin-top:5px !important;
@@ -181,7 +175,7 @@ body{
   background-position:center;
 }
 
-/* REMOVE EXTRA SPACE */
+
 .carousel,
 .carousel-inner,
 .carousel-item{
@@ -191,7 +185,7 @@ body{
 
 }
 
-/* 🔍 SEARCH BAR */
+
 .search-box{
   display:flex;
   align-items:center;
@@ -218,7 +212,7 @@ body{
   font-size:18px;
 }
 
-/* AUTOCOMPLETE */
+
 #suggestions{
   position:absolute;
   top:110%;
@@ -262,10 +256,6 @@ body{
 }
 
 
-/* ===== SLIDER ===== */
-/* ===== SLIDER NEW CLEAN ===== */
-
-/* slider container */
 .hero-slider{
   width:100%;
   height:550px;
@@ -286,7 +276,7 @@ body{
     background-size:contain;  
   }
 }
-/* mobile fix */
+
 @media(max-width:768px){
 
   .hero-slider{
@@ -319,7 +309,7 @@ body{
 }
 
 }
-    /* FIX BOOTSTRAP HEIGHT ISSUE */
+
 .carousel-item{
   height:100%;
 }
@@ -346,9 +336,6 @@ body{
   background:#cfcfcf;opacity:1;border:0;
 }
 .carousel-indicators .active{background:#0a7d5f;}
-/* =========================
-TRENDING COLLECTION
-========================= */
 
 .new-collection{
   width:100%;
@@ -364,7 +351,7 @@ TRENDING COLLECTION
   color:#111;
 }
 
-/* GRID */
+
 
 .new-grid{
   display:flex;
@@ -374,7 +361,7 @@ TRENDING COLLECTION
   width:100%;
 }
 
-/* CARD */
+
 
 .new-card{
   width:220px;
@@ -390,7 +377,7 @@ TRENDING COLLECTION
   box-shadow:0 12px 28px rgba(0,0,0,0.12);
 }
 
-/* IMAGE */
+
 
 .new-card img{
   width:100%;
@@ -399,9 +386,7 @@ TRENDING COLLECTION
   display:block;
 }
 
-/* =========================
-BEST SELLERS CLEAN PREMIUM
-========================= */
+
 
 .best-sellers{
   width:100%;
@@ -411,7 +396,7 @@ BEST SELLERS CLEAN PREMIUM
   margin-top:25px;
 }
 
-/* HEADING */
+
 
 .best-sellers h2{
   font-size:42px;
@@ -430,7 +415,7 @@ BEST SELLERS CLEAN PREMIUM
   color:#ff4d00;
 }
 
-/* LINE */
+
 
 .best-sellers h2::after{
   content:'';
@@ -444,7 +429,7 @@ BEST SELLERS CLEAN PREMIUM
   linear-gradient(90deg,#ff0000,#ff7300);
 }
 
-/* GRID */
+
 
 .best-grid{
   display:grid;
@@ -455,7 +440,7 @@ BEST SELLERS CLEAN PREMIUM
   gap:18px;
 }
 
-/* CARD */
+
 
 .best-card{
   background:#fff;
@@ -476,7 +461,6 @@ BEST SELLERS CLEAN PREMIUM
   0 12px 28px rgba(0,0,0,0.14);
 }
 
-/* IMAGE */
 
 .best-card img{
   width:100%;
@@ -491,7 +475,7 @@ BEST SELLERS CLEAN PREMIUM
   transform:scale(1.04);
 }
 
-/* HOT TAG */
+
 
 .best-card::before{
   content:'HOT';
@@ -516,7 +500,7 @@ BEST SELLERS CLEAN PREMIUM
   z-index:5;
 }
 
-/* TITLE */
+
 
 .best-card h4{
   font-size:17px;
@@ -526,7 +510,6 @@ BEST SELLERS CLEAN PREMIUM
   color:#111;
 }
 
-/* PRICE */
 
 .best-card p{
   text-align:center;
@@ -540,7 +523,7 @@ BEST SELLERS CLEAN PREMIUM
   color:#ff3c00;
 }
 
-/* BUTTON */
+
 
 .btn{
   width:80%;
@@ -572,7 +555,7 @@ BEST SELLERS CLEAN PREMIUM
   linear-gradient(90deg,#ff0000,#ff7300);
 }
 
-/* MOBILE */
+
 
 @media(max-width:768px){
 
@@ -614,9 +597,7 @@ BEST SELLERS CLEAN PREMIUM
 }
 
 }
-/* =========================
-MOBILE RESPONSIVE
-========================= */
+
 
 @media(max-width:768px){
 
@@ -660,7 +641,7 @@ MOBILE RESPONSIVE
   }
 
 }
-/* ===== MOBILE BOTTOM NAV ===== */
+
 .mobile-nav{
   position:fixed;
   bottom:0;
@@ -693,14 +674,14 @@ MOBILE RESPONSIVE
 }
 
 
- /* Mobile */
+
 @media(max-width:768px){
   .mobile-nav{
     display:flex;
   }
 }
 
-/* Desktop + Mobile Common */
+
 .cat-row{
   display:flex;
   flex-wrap:nowrap;
@@ -711,7 +692,7 @@ MOBILE RESPONSIVE
   scroll-behavior:smooth;
 }
 
-/* scrollbar hide */
+
 .cat-row::-webkit-scrollbar{
   display:none;
 }
@@ -722,7 +703,7 @@ MOBILE RESPONSIVE
   text-align:center;
 }
 
-/* ===== CATEGORY ROW ===== */
+
 
 .cat-row{
   display:flex;
@@ -733,12 +714,12 @@ MOBILE RESPONSIVE
   background:#fff;
 }
 
-/* scrollbar hide */
+
 .cat-row::-webkit-scrollbar{
   display:none;
 }
 
-/* ===== CATEGORY CARD ===== */
+
 
 .cat-box{
   width:140px;
@@ -756,7 +737,6 @@ MOBILE RESPONSIVE
   box-shadow:0 8px 25px rgba(0,0,0,0.12);
 }
 
-/* ===== CATEGORY IMAGE ===== */
 
 .cat-box img{
   width:120px;
@@ -766,7 +746,6 @@ MOBILE RESPONSIVE
   background:#f2f2f2;
 }
 
-/* ===== CATEGORY TEXT ===== */
 
 .cat-box span{
   font-size:14px;
@@ -777,7 +756,6 @@ MOBILE RESPONSIVE
   margin-bottom:10px;
 }
 
-/* ===== MOBILE ===== */
 
 @media(max-width:768px){
 
@@ -805,7 +783,6 @@ MOBILE RESPONSIVE
 
 }
 
-/* ===== BOTTOM SPACE ===== */
 
 body{
   padding-bottom:70px;
@@ -853,7 +830,6 @@ body{
 footer{
   width:100%;
 } 
-/* LINKS */
 
 .footer-links{
   display:flex;
@@ -881,7 +857,6 @@ footer{
   padding-left:5px;
 }
 
-/* PAYMENT */
 
 .footer-bottom{
   margin-top:40px;
@@ -917,7 +892,6 @@ footer{
     border-radius:8px;
 }
 
-/* MOBILE */
 
 @media(max-width:768px){
 
@@ -946,7 +920,6 @@ footer{
 
 <body>
 
-<!-- NAVBAR -->
 <div class="navbar">
   <div class="nav-left">
     <img src="uploads/logo.png" class="nav-logo">
@@ -960,13 +933,11 @@ footer{
 
   </ul>
 
-  <!-- 🔍 ADVANCED SEARCH -->
   <form action="search.php" method="get" class="search-box" autocomplete="off">
     <input type="text" name="q" id="searchInput" placeholder="Search products...">
     <button type="submit">🔍</button>
     <div id="suggestions"></div>
   </form>
-<!-- ✅ FIXED NAV-ICONS (NO DUPLICATION) -->
  <div class="nav-icons">
 
   <?php if(isset($_SESSION['user_id'])){ ?>
@@ -980,7 +951,6 @@ footer{
 </div>
     </div>
     
-<!-- ===== SLIDER ===== -->
 <div id="homeSlider"
      class="carousel slide hero-slider"
      data-bs-ride="carousel"
@@ -989,7 +959,6 @@ footer{
      data-bs-wrap="true"
      data-bs-touch="true">
 
-  <!-- DOTS (Bootstrap controlled) -->
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#homeSlider" data-bs-slide-to="0" class="active"></button>
     <button type="button" data-bs-target="#homeSlider" data-bs-slide-to="1"></button>
@@ -1082,7 +1051,6 @@ footer{
 
 </div>
     
-<!-- ===== TRENDING COLLECTION ===== -->
 
 <section class="new-collection">
 
@@ -1090,7 +1058,6 @@ footer{
 
 <div class="new-grid">
 
-<!-- CARD 1 -->
 
 <a href="trending.php" class="trending-link">
 
@@ -1103,7 +1070,6 @@ alt="Trending Product 1">
 
 </a>
 
-<!-- CARD 2 -->
 
 <a href="trending.php" class="trending-link">
 
@@ -1116,7 +1082,6 @@ alt="Trending Product 2">
 
 </a>
 
-<!-- CARD 3 -->
 
 <a href="trending.php" class="trending-link">
 
@@ -1129,7 +1094,6 @@ alt="Trending Product 3">
 
 </a>
 
-<!-- CARD 5 -->
 
 <a href="trending.php" class="trending-link">
 
@@ -1142,7 +1106,6 @@ alt="Trending Product 5">
 
 </a>
     
-    <!-- CARD 4 -->
 
 <a href="trending.php" class="trending-link">
 
@@ -1161,7 +1124,6 @@ alt="Trending Product 4">
 </div>
 
 </section>
-<!-- ===== BEST SELLERS ===== -->
 
 <section class="best-sellers">
 
@@ -1211,11 +1173,9 @@ VIEW PRODUCT
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-/* INPUT & SUGGESTION BOX */
 const input = document.getElementById("searchInput");
 const box   = document.getElementById("suggestions");
 
-/* 🔍 TYPE KARTE HI SUGGESTION */
 input.addEventListener("keyup", function(){
   let q = this.value.trim();
 
@@ -1236,14 +1196,12 @@ input.addEventListener("keyup", function(){
     });
 });
 
-/* 👉 SUGGESTION CLICK */
 function pickSearch(val){
   input.value = val;
   box.style.display = "none";
   input.form.submit();   // direct search
 }
 
-/* 🧹 SEARCH KE BAAD INPUT CLEAR */
 input.form.addEventListener("submit", ()=>{
   setTimeout(()=>{
     input.value = "";
@@ -1251,7 +1209,6 @@ input.form.addEventListener("submit", ()=>{
   },200);
 });
 
-/* ❌ BAHAR CLICK KARO TO CLOSE */
 document.addEventListener("click", function(e){
   if(!e.target.closest(".search-box")){
     box.style.display = "none";
@@ -1270,7 +1227,6 @@ input.addEventListener("focus", function(){
   }
 });
 </script>
-    <!-- MOBILE BOTTOM NAV -->
 <div class="mobile-nav">
   
   <a href="index.php">
@@ -1296,7 +1252,6 @@ input.addEventListener("focus", function(){
 </div>
 <footer class="footer">
 
-  <!-- TOP ICONS -->
 
   <div class="footer-top">
 
@@ -1317,7 +1272,6 @@ input.addEventListener("focus", function(){
 
   </div>
 
-  <!-- LINKS -->
 
   <div class="footer-links">
 
@@ -1349,7 +1303,6 @@ input.addEventListener("focus", function(){
 
   </div>
 
-  <!-- BOTTOM -->
 
   <div class="footer-bottom">
 

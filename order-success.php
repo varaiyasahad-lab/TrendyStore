@@ -27,7 +27,6 @@ body{
   font-family:'Segoe UI',Tahoma,sans-serif;
 }
 
-/* CENTER */
 .success-wrapper{
   min-height:100vh;
   display:flex;
@@ -35,7 +34,6 @@ body{
   justify-content:center;
 }
 
-/* CARD */
 .success-card{
   background:#fff;
   padding:40px;
@@ -46,7 +44,6 @@ body{
   max-width:420px;
 }
 
-/* CIRCLE */
 .check-circle{
   width:90px;
   height:90px;
@@ -57,7 +54,6 @@ body{
   animation: scaleIn .4s ease forwards;
 }
 
-/* CHECK */
 .check{
   width:28px;
   height:50px;
@@ -71,7 +67,6 @@ body{
   animation-delay:.4s;
 }
 
-/* TEXT */
 .success-text{
   font-size:20px;
   font-weight:600;
@@ -88,13 +83,11 @@ body{
   animation-delay:1.3s;
 }
 
-/* BUTTON */
 .btn-success{
   margin-top:25px;
   border-radius:10px;
 }
 
-/* ANIMATIONS */
 @keyframes drawCheck{
   to{ transform:rotate(45deg) scale(1); }
 }
@@ -113,7 +106,6 @@ body{
 <div class="success-wrapper">
   <div class="success-card">
 
-    <!-- GPay Style Animation -->
     <div class="check-circle">
       <div class="check"></div>
     </div>
